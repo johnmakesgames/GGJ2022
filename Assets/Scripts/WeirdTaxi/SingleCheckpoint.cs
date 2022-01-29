@@ -6,15 +6,12 @@ public class SingleCheckpoint : MonoBehaviour
 {
     private CheckpointSystem CheckpointSystem;
 
-    private void OnCollisionEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<PlayerInteraction>(out PlayerInteraction player))
-            {
+        if (other.gameObject.GetComponent<CarController>())
+        {
             CheckpointSystem.PlayerThroughCheckpoint(this);
         }
-       
-           
-      
     }
 
     public void SetCheckpoint(CheckpointSystem checkpointSystem)
