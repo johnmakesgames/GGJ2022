@@ -17,7 +17,7 @@ public class CarController : MonoBehaviour
     [SerializeField] Transform RearLeftTransform;
 
     public float accel = 100000f;
-    public float brakeForce = 90000f;
+    public float brakeForce = 1000000f;
     public float maxTurn = 25f;
 
     private float currentAccel = 0f;
@@ -31,7 +31,7 @@ public class CarController : MonoBehaviour
 
 
         //apply braking
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey("space"))
         {
             currentBrake = brakeForce;
         }
@@ -41,6 +41,9 @@ public class CarController : MonoBehaviour
         //apply acceleration
         FrontRight.motorTorque = currentAccel;
         FrontLeft.motorTorque = currentAccel;
+        RearRight.motorTorque = currentAccel;
+        RearLeft.motorTorque = currentAccel;
+
 
         //send braking force to the wheels
         FrontRight.brakeTorque = currentBrake;
