@@ -31,12 +31,14 @@ public class InstantiatedTree
     {
         var tree = new BehaviourTree();
             var repeater = (RepeaterNode)tree.CreateNode(typeof(RepeaterNode));
-                var sequence = (SequenceNode)tree.CreateNode(typeof(SequenceNode));
-                    sequence.children.Add(tree.CreateNode(typeof(WalkToRandomLocationNode)));
-                    sequence.children.Add(tree.CreateNode(typeof(WaitNode)));
-                    sequence.children.Add(tree.CreateNode(typeof(WalkToRandomLocationNode)));
-                    sequence.children.Add(tree.CreateNode(typeof(WaitNode)));
-            repeater.child = sequence;
+                var decision = (DecisionNode)tree.CreateNode(typeof(DecisionNode));
+                decision.Comparator = () => { return true; };
+                    var sequence = (SequenceNode)tree.CreateNode(typeof(SequenceNode));
+                        sequence.children.Add(tree.CreateNode(typeof(WalkToRandomLocationNode)));
+                        sequence.children.Add(tree.CreateNode(typeof(WaitNode)));
+                decision.trueNode = sequence;
+                decision.falseNode = tree.CreateNode(typeof(DebugLogNode));
+            repeater.child = decision;
         tree.rootNode = repeater;
 
         return tree;

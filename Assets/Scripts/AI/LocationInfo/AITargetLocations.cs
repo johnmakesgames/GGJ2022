@@ -4,26 +4,28 @@ using UnityEngine;
 
 public class AITargetLocations
 {
-    List<Vector3> destinations;
-
-    AITargetLocations()
+    private static List<Vector3> GetAllLocations()
     {
         var allLocations = GameObject.FindGameObjectsWithTag("AiDestination");
-        destinations = new List<Vector3>();
+        List<Vector3> destinations = new List<Vector3>();
 
         foreach (var obj in allLocations)
         {
             destinations.Add(obj.transform.position);
         }
+
+        return destinations;
     }
 
-    public Vector3 GetRandomLocation()
+    public static Vector3 GetRandomLocation()
     {
+        var destinations = GetAllLocations();
         return destinations[Random.Range(0, destinations.Count - 1)];
     }
 
-    public Vector3 GetClosestLocation(Vector3 currentLocation)
+    public static Vector3 GetClosestLocation(Vector3 currentLocation)
     {
+        var destinations = GetAllLocations();
         Vector3 closestDestination = destinations[0];
         float closestDistance = Vector3.Distance(currentLocation, destinations[0]);
 
@@ -38,19 +40,5 @@ public class AITargetLocations
         }
 
         return closestDestination;
-    }
-
-    static AITargetLocations instance = null;
-    public static AITargetLocations Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = new AITargetLocations();
-            }
-
-            return instance;
-        }
     }
 }

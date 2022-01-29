@@ -23,7 +23,7 @@ public class WalkToLocation : IState
     public WalkToLocation(GameObject owner)
     {
         m_Owner = owner;
-        destination = AITargetLocations.Instance.GetRandomLocation();
+        destination = AITargetLocations.GetRandomLocation();
     }
 
     public void Act()
@@ -45,7 +45,7 @@ public class WalkToLocation : IState
 
     public void EnterState()
     {
-        destination = AITargetLocations.Instance.GetRandomLocation();
+        destination = AITargetLocations.GetRandomLocation();
     }
 
     public void ExitState()

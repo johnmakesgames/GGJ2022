@@ -9,7 +9,7 @@ public class DebugLogNode : ActionNode
     {
         Debug.Log("STARTED");
     }
-
+    
     public override void OnExit()
     {
         Debug.Log("ENDED");
