@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class FishingRod : MonoBehaviour
 {
+    [SerializeField]
+    private FishSchoolController mFishController;
+
     public GameObject mFishIndicator;
     public GameObject mPlayer;
+    public Transform mTopOfRod;
 
     bool mRodActive = false;
-    bool mFishBitten = true;
+    bool mFishBitten = false;
     bool mReelingIn = false;
 
     public float mReelInSpeed = 3f;
     public float mCastDistance = 1000f;
     public float mGrabDistance = 10f;
     public Vector3 mOffsetFromRod;
+
+    FishController mBittenFish;
 
     // Start is called before the first frame update
     void Start()
@@ -32,13 +38,13 @@ public class FishingRod : MonoBehaviour
     {
         if(mReelingIn)
         {
-            Vector3 movementDir = this.transform.position - mFishIndicator.transform.position;
-            movementDir.Normalize();
-            Vector3 movement = new Vector3(movementDir.x * mReelInSpeed, 0, movementDir.z * mReelInSpeed);
-            mFishIndicator.transform.position += movement;
-            Debug.Log("Reel In");
+            Vector3 movementDir = mTopOfRod.position - mFishIndicator.transform.position;
 
-            float distance = Vector3.Distance(this.transform.position, mFishIndicator.transform.position);
+            movementDir.Normalize();
+            Vector3 movement = new Vector3(movementDir.x * mReelInSpeed, movementDir.y * mReelInSpeed, movementDir.z * mReelInSpeed);
+            mFishIndicator.transform.position += movement;
+
+            float distance = Vector3.Distance(mTopOfRod.position, mFishIndicator.transform.position);
             if (distance <= mGrabDistance)
             {
                 Debug.Log("Reel In finish");
@@ -53,7 +59,8 @@ public class FishingRod : MonoBehaviour
         {
             //Fire indicator to x distance in look direction
             Vector3 movement = new Vector3(mPlayer.transform.forward.x * mCastDistance, 0, mPlayer.transform.forward.z * mCastDistance);
-            mFishIndicator.transform.position += new Vector3(mPlayer.transform.forward.x * mCastDistance, 0, mPlayer.transform.forward.z * mCastDistance);// mPlayer.transform.forward * mCastDistance;
+            mFishIndicator.transform.position += new Vector3(mPlayer.transform.forward.x * mCastDistance, -20f, mPlayer.transform.forward.z * mCastDistance);// mPlayer.transform.forward * mCastDistance;
+           
             Debug.Log(movement);
             Debug.Log("Cast line");
             mRodActive = true;
@@ -90,12 +97,15 @@ public class FishingRod : MonoBehaviour
     void NotifyFishRodCast()
     {
         //Notify fish that bait is in the water
+        mFishController.NotifyRodCast(mFishIndicator.transform);
     }
 
-    void NotifyFishBite()
+    public void NotifyFishBite(FishController fish)
     {
         //fire prompt to player UI
+        mBittenFish = fish;
         mFishBitten = true;
+        mBittenFish.GetComponentInParent<Transform>().position = mFishIndicator.transform.position;
     }
 
     void SuccessfulCatch()
@@ -105,6 +115,8 @@ public class FishingRod : MonoBehaviour
         mRodActive = false;
         mFishBitten = false;
 
+        mBittenFish.OnCaught();
+        mBittenFish = null;
         ImmediateReelIn();
     }
 
