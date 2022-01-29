@@ -18,10 +18,24 @@ public class DriveToRandomParkingSpaceNode : ActionNode
         positionToGoTo = new Vector3(0, 0, 0);
     }
 
+    private bool onLink;
     public override NodeStates OnUpdate()
     {
         float distance = Vector3.Distance(parent.transform.position, positionToGoTo);
         Debug.Log($"Distance to Goal {distance}");
+
+        if (parent.GetComponent<UnityEngine.AI.NavMeshAgent>().isOnOffMeshLink && !onLink)
+        {
+            onLink = true;
+            parent.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = 5;
+        }
+        else if (!parent.GetComponent<UnityEngine.AI.NavMeshAgent>().isOnOffMeshLink && onLink)
+        {
+            onLink = false;
+            parent.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = 15;
+        }
+
+
         if (distance > 0.6f)
         {
             return NodeStates.Running;
