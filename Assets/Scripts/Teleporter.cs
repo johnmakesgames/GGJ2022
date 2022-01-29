@@ -6,24 +6,38 @@ using UnityEngine.UI;
 public class Teleporter : MonoBehaviour
 {
 
-    public Transform teleportTargert;
+    public Transform teleportTarget;
     public GameObject playerObject;
-    [SerializeField] private Image teleporterUI;
+    public GameObject checkObject;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        teleporterUI.enabled = false;
-    }
+    [SerializeField] private Text teleportToRoof;
+    [SerializeField] private Text teleportToGround;
+
 
     private void OnTriggerEnter(Collider other)
     {
-        teleporterUI.enabled = true;
+
+        if(checkObject.CompareTag("groundfloorTeleporter"))
+        {
+            teleportToRoof.enabled = true;
+        }
+        else if(checkObject.CompareTag("roofTeleporter"))
+        {
+            teleportToGround.enabled = true;
+        }
+        
     }
 
     private void OnTriggerExit(Collider other)
     {
-        teleporterUI.enabled = false;
+        if (checkObject.CompareTag("groundfloorTeleporter"))
+        {
+            teleportToRoof.enabled = false;
+        }
+        else if (checkObject.CompareTag("roofTeleporter"))
+        {
+            teleportToGround.enabled = false;
+        }
     }
 
 
@@ -31,7 +45,7 @@ public class Teleporter : MonoBehaviour
     public void ActivateTeleport()
     {
         playerObject.GetComponent<CharacterController>().enabled = false;
-        playerObject.transform.position = teleportTargert.transform.position;
+        playerObject.transform.position = teleportTarget.transform.position;
         playerObject.GetComponent<CharacterController>().enabled = true;
     }
 }
