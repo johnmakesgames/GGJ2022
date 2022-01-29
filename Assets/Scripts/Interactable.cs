@@ -17,6 +17,7 @@ public class Interactable : MonoBehaviour
     [HideInInspector]
     public void TriggerInteraction()
     {
+        Debug.Log("Trigger Interaction");
         OnInteractionEvent.Invoke();
     }
 

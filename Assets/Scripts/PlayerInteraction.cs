@@ -17,11 +17,13 @@ public class PlayerInteraction : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(Input.GetButtonDown("Interact") && CanInteractWithOthers)
+        if (Input.GetButtonDown("Interact") && CanInteractWithOthers)
         {
+            Debug.Log("interact cast");
+
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-
+            Debug.Log("interact cast");
             if (Physics.Raycast(ray, out hit, 20.0f))
             {
                 Debug.DrawLine(ray.origin, hit.point);

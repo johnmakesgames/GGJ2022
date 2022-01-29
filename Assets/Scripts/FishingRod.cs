@@ -7,8 +7,6 @@ public class FishingRod : MonoBehaviour
     public GameObject mFishIndicator;
     public GameObject mPlayer;
 
-    bool mCurrentlyHeld = true;
-    bool mCanCastRod = true;
     bool mRodActive = false;
     bool mFishBitten = false;
 
@@ -26,41 +24,33 @@ public class FishingRod : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(mCurrentlyHeld)
+
+    }
+
+
+    public void CastLine()
+    {
+        if(!mRodActive)
         {
-            if(Input.GetMouseButtonDown(0))
+            //Fire indicator to x distance in look direction
+            Vector3 movement = new Vector3(mPlayer.transform.forward.x * mCastDistance, 0, mPlayer.transform.forward.z * mCastDistance);
+            mFishIndicator.transform.position += new Vector3(mPlayer.transform.forward.x * mCastDistance, 0, mPlayer.transform.forward.z * mCastDistance);// mPlayer.transform.forward * mCastDistance;
+            Debug.Log(movement);
+            Debug.Log("Cast line");
+            mRodActive = true;
+            NotifyFishRodCast();
+        }
+        else
+        {
+            if(mFishBitten)
             {
-                if(!mRodActive && mCanCastRod)
-                {
-                    CastLine();
-                }
-                else if (mFishBitten)
-                {
-                    ReelInLine();
-                }
-                else if(mRodActive)
-                {
-                    ImmediateReelIn();
-                }
+                ReelInLine();
+            }
+            else
+            {
+                ImmediateReelIn();
             }
         }
-    }
-
-    bool CanCast()
-    {
-        return mCanCastRod;
-    }
-
-    void CastLine()
-    {
-        //Fire indicator to x distance in look direction
-        Vector3 movement = new Vector3(mPlayer.transform.forward.x * mCastDistance, 0, mPlayer.transform.forward.z * mCastDistance);
-        mFishIndicator.transform.position += new Vector3(mPlayer.transform.forward.x * mCastDistance, 0, mPlayer.transform.forward.z * mCastDistance);// mPlayer.transform.forward * mCastDistance;
-        Debug.Log(movement);
-        Debug.Log("Cast line");
-        mRodActive = true;
-        mCanCastRod = false;
-        NotifyFishRodCast();
     }
 
     void ReelInLine()
@@ -79,18 +69,7 @@ public class FishingRod : MonoBehaviour
     {
         Debug.Log("Reel In immediate");
         mFishIndicator.transform.position = this.transform.position + mOffsetFromRod;
-        mCanCastRod = true;
         FailedCatch();
-    }
-
-    void RodPickedUp()
-    {
-        mCurrentlyHeld = true;
-    }
-
-    void RodPutDown()
-    {
-        mCurrentlyHeld = false;
     }
 
     void NotifyFishRodCast()
