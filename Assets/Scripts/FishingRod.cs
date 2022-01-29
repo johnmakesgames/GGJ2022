@@ -67,6 +67,7 @@ public class FishingRod : MonoBehaviour
             }
             else
             {
+                FailedCatch();
                 ImmediateReelIn();
             }
         }
@@ -84,7 +85,6 @@ public class FishingRod : MonoBehaviour
     {
         Debug.Log("Reel In immediate");
         mFishIndicator.transform.position = this.transform.position + mOffsetFromRod;
-        FailedCatch();
     }
 
     void NotifyFishRodCast()
