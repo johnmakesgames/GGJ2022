@@ -4,8 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - groundfloorTeleporter
+  - roofTeleporter
   - AiDestination
   - CarDestination
+  - Fish
   layers:
   - Default
   - TransparentFX
