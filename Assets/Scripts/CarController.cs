@@ -16,8 +16,8 @@ public class CarController : MonoBehaviour
     [SerializeField] Transform RearRightTransform;
     [SerializeField] Transform RearLeftTransform;
 
-    public float accel = 100000f;
-    public float brakeForce = 1000000f;
+    public float accel = 500f;
+    public float brakeForce = 300f;
     public float maxTurn = 25f;
 
     private float currentAccel = 0f;
@@ -61,6 +61,12 @@ public class CarController : MonoBehaviour
         updatewheel(FrontRight, FrontRightTransform);
         updatewheel(RearLeft, RearLeftTransform);
         updatewheel(RearRight, RearRightTransform);
+
+        //flip the car
+        if (Input.GetKey("e"))
+        {
+            transform.rotation = Quaternion.identity;
+        }
     }
 
     void updatewheel(WheelCollider col, Transform trans)
