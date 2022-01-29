@@ -17,6 +17,9 @@ public class InstantiatedTree
             case "TestAgentTree":
                 tree = GetTestAgentTree();
                 break;
+            case "TestCarTree":
+                tree = GetTestCarAgentTree();
+                break;
             default:
                 break;
         }
@@ -39,6 +42,23 @@ public class InstantiatedTree
                 decision.trueNode = sequence;
                 decision.falseNode = tree.CreateNode(typeof(DebugLogNode));
             repeater.child = decision;
+        tree.rootNode = repeater;
+
+        return tree;
+    }
+
+    private static BehaviourTree GetTestCarAgentTree()
+    {
+        var tree = new BehaviourTree();
+        var repeater = (RepeaterNode)tree.CreateNode(typeof(RepeaterNode));
+        var decision = (DecisionNode)tree.CreateNode(typeof(DecisionNode));
+        decision.Comparator = () => { return true; };
+        var sequence = (SequenceNode)tree.CreateNode(typeof(SequenceNode));
+        sequence.children.Add(tree.CreateNode(typeof(DriveToRandomParkingSpaceNode)));
+        sequence.children.Add(tree.CreateNode(typeof(WaitNode)));
+        decision.trueNode = sequence;
+        decision.falseNode = tree.CreateNode(typeof(DebugLogNode));
+        repeater.child = decision;
         tree.rootNode = repeater;
 
         return tree;

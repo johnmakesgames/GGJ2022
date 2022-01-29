@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class AITargetLocations
 {
-    private static List<Vector3> GetAllLocations()
+    private static List<Vector3> GetAllLocations(string tagToSearchFor)
     {
-        var allLocations = GameObject.FindGameObjectsWithTag("AiDestination");
+        var allLocations = GameObject.FindGameObjectsWithTag(tagToSearchFor);
         List<Vector3> destinations = new List<Vector3>();
 
         foreach (var obj in allLocations)
@@ -17,15 +17,15 @@ public class AITargetLocations
         return destinations;
     }
 
-    public static Vector3 GetRandomLocation()
+    public static Vector3 GetRandomLocation(string tagToSearchFor)
     {
-        var destinations = GetAllLocations();
+        var destinations = GetAllLocations(tagToSearchFor);
         return destinations[Random.Range(0, destinations.Count - 1)];
     }
 
     public static Vector3 GetClosestLocation(Vector3 currentLocation)
     {
-        var destinations = GetAllLocations();
+        var destinations = GetAllLocations("AiDestination");
         Vector3 closestDestination = destinations[0];
         float closestDistance = Vector3.Distance(currentLocation, destinations[0]);
 

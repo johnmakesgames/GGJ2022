@@ -6,7 +6,7 @@ public class WalkToRandomLocationNode : ActionNode
     Vector3 positionToGoTo = new Vector3(0, 0, 0);
     public override void OnEntered()
     {
-        positionToGoTo = AITargetLocations.GetRandomLocation();
+        positionToGoTo = AITargetLocations.GetRandomLocation("AiDestination");
         NavMeshPath path = new NavMeshPath();
         parent.GetComponent<NavMeshAgent>().CalculatePath(positionToGoTo, path);
         parent.GetComponent<NavMeshAgent>().SetPath(path);
