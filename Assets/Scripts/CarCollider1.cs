@@ -9,13 +9,13 @@ public class CarCollider1 : MonoBehaviour
     public CarController Speed;
 
 
-    void OnCollisionEnter(Collision collisionInfo)
-    {
-        if (CollicionInfo.collider.name != "Ground")
-        {
-            carHP = carHP - 4
-        }
-    }
+   // void OnCollisionEnter(Collision collisionInfo)
+    //{
+      //  if (CollisionInfo.collider.name != "Ground")
+        //{
+        //    carHP = carHP - 4;
+        //}
+    //}
 
     // Update is called once per frame
     void Update()
