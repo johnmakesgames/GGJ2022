@@ -4,48 +4,41 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    public InventoryItem testItem;
-
+    public float InteractionDistance;
     public bool CanInteractWithOthers = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(InteractionDistance == 0.0f)
+        {
+            InteractionDistance = 15.0f;
+        }
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        if(Input.GetButtonDown("Interact") && CanInteractWithOthers)
+        if (Input.GetButtonDown("Interact") && CanInteractWithOthers)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, 20.0f))
+            if (Physics.Raycast(ray, out hit, InteractionDistance))
             {
-                Debug.DrawLine(ray.origin, hit.point);
+                Debug.DrawLine(ray.origin, hit.point, Color.green);
                 Interactable interactable = hit.collider.gameObject.GetComponent<Interactable>();
 
                 if(interactable != null)
                 {
-                    interactable.TriggerInteraction();
+                    interactable.Interact();
                 }
             }        
+            else
+            {
+                Debug.DrawLine(ray.origin, ray.origin + (ray.direction.normalized * InteractionDistance), Color.red);
+            }
         }
-    }
-
-
-    public void TestInventory()
-    {
-        if(GetComponent<PlayerInventory>().AddToInventory(testItem))
-        {
-            Debug.Log("ITEM ADDED");
-        }
-        else
-        {
-            Debug.Log("ITEM NOT ADDED");
-        }    
     }
 
     public void SetCanInteract(bool state)
