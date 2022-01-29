@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3043cbba05104a84e9835f97031e128d, type: 3}
-  m_Name: Test Item
+  m_Name: Alt Test Item
   m_EditorClassIdentifier: 
-  ItemDisplayName: TEST ITEM
-  ItemSprite: {fileID: 21300000, guid: 3be28ca56c2877d4a88f2f55be1347bd, type: 3}
+  ItemDisplayName: ALT TEST
+  ItemSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}

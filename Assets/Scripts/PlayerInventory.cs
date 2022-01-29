@@ -5,8 +5,6 @@ using UnityEngine;
 using UnityEditor.UI;
 using UnityEditor;
 
-
-
 public class PlayerInventory : MonoBehaviour
 {
     [Range(0, 20)]
@@ -35,7 +33,7 @@ public class PlayerInventory : MonoBehaviour
 
     public bool RemoveFromInventory(InventoryItem item)
     {
-        if(item != null)
+        if(item != null && Data.Count > 0)
         {
             int location = -1;
             for(int i = 0; i < Data.Count; i++)
@@ -50,12 +48,12 @@ public class PlayerInventory : MonoBehaviour
             if(location != -1)
             {
                 Data.RemoveAt(location);
+                return true;
             }
         }
 
         return false;
     }
-
 
     public bool IsInInventory(InventoryItem item)
     {
