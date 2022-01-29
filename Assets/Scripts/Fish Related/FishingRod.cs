@@ -14,6 +14,7 @@ public class FishingRod : MonoBehaviour
     bool mRodActive = false;
     bool mFishBitten = false;
     bool mReelingIn = false;
+    bool mEquipped = false;
 
     public float mReelInSpeed = 3f;
     public float mCastDistance = 1000f;
@@ -87,6 +88,12 @@ public class FishingRod : MonoBehaviour
         {
             mReelingIn = false;
         }
+    }
+
+    public void OnEquipped()
+    {
+        mEquipped = !mEquipped;
+        //place in front of player
     }
 
     void ImmediateReelIn()
