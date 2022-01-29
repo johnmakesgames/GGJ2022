@@ -70,8 +70,8 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 1
+  m_BaseOffset: -0.05
+  m_WalkableMask: 17
   m_ObstacleAvoidanceType: 4
 --- !u!136 &5804611394472856921
 CapsuleCollider:
@@ -119,6 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae28b3ac354fb85499b6ef8564e3d328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movingSpeed: 0
+  overrideSpeed: -1
 --- !u!1001 &2234841330973308083
 PrefabInstance:
   m_ObjectHideFlags: 0
