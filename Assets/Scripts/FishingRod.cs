@@ -8,11 +8,12 @@ public class FishingRod : MonoBehaviour
     public GameObject mPlayer;
 
     bool mRodActive = false;
-    bool mFishBitten = false;
+    bool mFishBitten = true;
+    bool mReelingIn = false;
 
     public float mReelInSpeed = 3f;
     public float mCastDistance = 1000f;
-    public float mGrabDistance = 1f;
+    public float mGrabDistance = 10f;
     public Vector3 mOffsetFromRod;
 
     // Start is called before the first frame update
@@ -27,7 +28,25 @@ public class FishingRod : MonoBehaviour
 
     }
 
+    private void FixedUpdate()
+    {
+        if(mReelingIn)
+        {
+            Vector3 movementDir = this.transform.position - mFishIndicator.transform.position;
+            movementDir.Normalize();
+            Vector3 movement = new Vector3(movementDir.x * mReelInSpeed, 0, movementDir.z * mReelInSpeed);
+            mFishIndicator.transform.position += movement;
+            Debug.Log("Reel In");
 
+            float distance = Vector3.Distance(this.transform.position, mFishIndicator.transform.position);
+            if (distance <= mGrabDistance)
+            {
+                Debug.Log("Reel In finish");
+
+                SuccessfulCatch();
+            }
+        }
+    }
     public void CastLine()
     {
         if(!mRodActive)
@@ -42,9 +61,9 @@ public class FishingRod : MonoBehaviour
         }
         else
         {
-            if(mFishBitten)
+            if (mFishBitten)
             {
-                ReelInLine();
+                mReelingIn = true;
             }
             else
             {
@@ -53,15 +72,11 @@ public class FishingRod : MonoBehaviour
         }
     }
 
-    void ReelInLine()
+    public void ReelInLine()
     {
-        mFishIndicator.transform.position -= mPlayer.transform.forward * mReelInSpeed * Time.deltaTime;
-        Debug.Log("Reel In");
-
-        float distance = Vector3.Distance(this.transform.position, mFishIndicator.transform.position);
-        if(distance <= mGrabDistance)
+        if(mReelingIn)
         {
-            SuccessfulCatch();
+            mReelingIn = false;
         }
     }
 
@@ -86,8 +101,11 @@ public class FishingRod : MonoBehaviour
     void SuccessfulCatch()
     {
         //play animation and add to inventory
+        mReelingIn = false;
         mRodActive = false;
         mFishBitten = false;
+
+        ImmediateReelIn();
     }
 
     void FailedCatch()

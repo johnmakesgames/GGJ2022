@@ -7,6 +7,8 @@ public class ItemHold : MonoBehaviour
 {
     [SerializeField]
     private UnityEvent OnUseItemEvent;
+    [SerializeField]
+    private UnityEvent OnItemUseRelease;
 
     public GameObject mPlayer;
     public Vector3 mOffest;
@@ -22,11 +24,6 @@ public class ItemHold : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Interact") && mHeld)
-        {
-            mHeld = false;
-        }
-
         if(mHeld)
         {
             this.transform.position = mPlayer.transform.position + mOffest;
@@ -35,21 +32,33 @@ public class ItemHold : MonoBehaviour
             {
                 UseItem();
             }
+
+            if(Input.GetMouseButtonUp(0))
+            {
+                EndUseItem();
+            }
         }
 
     }
     public void OnDestroy()
     {
         OnUseItemEvent.RemoveAllListeners();
+        OnItemUseRelease.RemoveAllListeners();
     }
 
     public void InteractWithItem() //pick up and drop
     {
+        Debug.Log("Interact with item");
         mHeld = !mHeld;
     }
 
     public void UseItem()
     {
         OnUseItemEvent.Invoke();
+    }
+
+    public void EndUseItem()
+    {
+        OnItemUseRelease.Invoke();
     }
 }
