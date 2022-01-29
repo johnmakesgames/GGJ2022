@@ -19,7 +19,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (Input.GetButtonDown("Interact") && CanInteractWithOthers)
         {
-            Debug.Log("interact cast");
+            Debug.Log("interact cast E");
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;

@@ -29,7 +29,6 @@ public class ItemHold : MonoBehaviour
 
         if(mHeld)
         {
-
             this.transform.position = mPlayer.transform.position + mOffest;
 
             if(Input.GetMouseButtonDown(0))
