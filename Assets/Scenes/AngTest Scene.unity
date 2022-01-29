@@ -530,6 +530,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7494452074236431372, guid: b4c1d28a6b9ab164585ef534f54217a4, type: 3}
+      propertyPath: mBiteDistance
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7494452074236431372, guid: b4c1d28a6b9ab164585ef534f54217a4, type: 3}
       propertyPath: OnBiteRodEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 635836982}
