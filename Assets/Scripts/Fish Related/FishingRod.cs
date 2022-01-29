@@ -43,6 +43,7 @@ public class FishingRod : MonoBehaviour
             movementDir.Normalize();
             Vector3 movement = new Vector3(movementDir.x * mReelInSpeed, movementDir.y * mReelInSpeed, movementDir.z * mReelInSpeed);
             mFishIndicator.transform.position += movement;
+            mBittenFish.GetComponentInParent<Transform>().position = mFishIndicator.transform.position;
 
             float distance = Vector3.Distance(mTopOfRod.position, mFishIndicator.transform.position);
             if (distance <= mGrabDistance)
@@ -105,6 +106,7 @@ public class FishingRod : MonoBehaviour
         //fire prompt to player UI
         mBittenFish = fish;
         mFishBitten = true;
+        Debug.Log("rod transform fish");
         mBittenFish.GetComponentInParent<Transform>().position = mFishIndicator.transform.position;
     }
 
