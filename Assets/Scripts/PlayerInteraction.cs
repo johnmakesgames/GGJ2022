@@ -19,7 +19,7 @@ public class PlayerInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Interact") && CanInteractWithOthers)
+        if (Input.GetButtonDown("Interact") && CanInteractWithOthers)
         {
             Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
             RaycastHit hit;

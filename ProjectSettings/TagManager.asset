@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - UnpackingFurniture
+  - groundfloorTeleporter
+  - roofTeleporter
+  - AiDestination
+  - CarDestination
+  - Fish
   layers:
   - Default
   - TransparentFX
