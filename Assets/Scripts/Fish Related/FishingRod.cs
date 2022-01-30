@@ -47,44 +47,59 @@ public class FishingRod : MonoBehaviour
         Vector3 move = transform.right * x + transform.forward * z;
         mPlayerController.Move(move * speed * Time.deltaTime);
         */
-
         if(mEquipped)
         {
-            float x = Input.GetAxis("Horizontal");
-            Vector3 move = mPlayer.transform.right * x * Time.deltaTime;
-            //Debug.Log(this.transform.eulerAngles);
-            //Debug.Log(move);
-            
-            this.transform.RotateAround(this.transform.position, mPlayer.transform.forward, x * Time.deltaTime * mRotateSpeed);
-        }
-
-
-        //Cap left right motion to stay on screen
-        //do some fancy quaternion math to make rod rotation nice
-
-
-        if (mReelingIn)
-        {
-            Vector3 movementDir = mTopOfRod.position - mFishIndicator.transform.position;
-
-            movementDir.Normalize();
-            Vector3 movement = new Vector3(movementDir.x * mReelInSpeed, movementDir.y * mReelInSpeed, movementDir.z * mReelInSpeed);
-            mFishIndicator.transform.position += movement;
-            mBittenFish.GetComponentInParent<Transform>().position = mFishIndicator.transform.position;
-
-            float distance = Vector3.Distance(mTopOfRod.position, mFishIndicator.transform.position);
-            if (distance <= mGrabDistance)
+            if (mRodActive)
             {
-                Debug.Log("Reel In finish");
+                float x = Input.GetAxis("Horizontal");
+                Vector3 move = mPlayer.transform.right * x * Time.deltaTime;
+                //Debug.Log(this.transform.eulerAngles);
+                //Debug.Log(move);
 
-                SuccessfulCatch();
+                this.transform.RotateAround(this.transform.position, mPlayer.transform.forward, x * Time.deltaTime * mRotateSpeed);
+                //Cap left right motion to stay on screen
+                //do some fancy quaternion math to make rod rotation nice
+
+
+                if (mReelingIn)
+                {
+                    Vector3 movementDir = mTopOfRod.position - mFishIndicator.transform.position;
+
+                    movementDir.Normalize();
+                    Vector3 movement = new Vector3(movementDir.x * mReelInSpeed, movementDir.y * mReelInSpeed, movementDir.z * mReelInSpeed);
+                    //mFishIndicator.transform.position += movement;
+                    // mBittenFish.GetComponentInParent<Transform>().position = mFishIndicator.transform.position;
+                    if (mBittenFish.mCaught)
+                    {
+                        mBittenFish.AddPullForce(movement);
+                    }
+                    mFishIndicator.transform.position = mBittenFish.transform.position;
+
+                    float distance = Vector3.Distance(mTopOfRod.position, mFishIndicator.transform.position);
+                    if (distance <= mGrabDistance)
+                    {
+                        Debug.Log("Reel In finish");
+
+                        SuccessfulCatch();
+                    }
+
+                    if (mLineTension >= mMaxLineTension)
+                    {
+                        LineBreak();
+                    }
+                }
+                else
+                {
+                    if(mFishBitten)
+                    {
+                        mBittenFish.AddPullForce(Vector3.zero);
+                        mFishIndicator.transform.position = mBittenFish.transform.position;
+                    }            
+                }
             }
 
-            if(mLineTension >= mMaxLineTension)
-            {
-                LineBreak();
-            }
-        }
+
+        }   
     }
     public void CastLine()
     {
@@ -94,7 +109,7 @@ public class FishingRod : MonoBehaviour
             mPlayer.GetComponent<Animator>().SetBool("Fishing", true);
             //Fire indicator to x distance in look direction
             Vector3 movement = new Vector3(mPlayer.transform.forward.x * mCastDistance, 0, mPlayer.transform.forward.z * mCastDistance);
-            mFishIndicator.transform.position += new Vector3(mPlayer.transform.forward.x * mCastDistance, 0f, mPlayer.transform.forward.z * mCastDistance);// mPlayer.transform.forward * mCastDistance;
+            mFishIndicator.transform.position += new Vector3(mPlayer.transform.forward.x * mCastDistance, -2f, mPlayer.transform.forward.z * mCastDistance);// mPlayer.transform.forward * mCastDistance;
             mFishIndicator.transform.parent = null;
            // Debug.Log(movement);
            // Debug.Log("Cast line");
@@ -175,6 +190,7 @@ public class FishingRod : MonoBehaviour
         mFishBitten = true;
         Debug.Log("rod transform fish");
         mBittenFish.GetComponentInParent<Transform>().position = mFishIndicator.transform.position;
+        mBittenFish.SetPlayerRight(mPlayer.transform.right);
     }
 
     void SuccessfulCatch()
@@ -193,12 +209,15 @@ public class FishingRod : MonoBehaviour
         mLineTension = 0;
     }
 
+
     void FailedCatch()
     {
         Debug.Log("failed catch");
 
         mFishIndicator.transform.SetParent(this.transform);
         mRodActive = false;
+        mFishBitten = false;
+        mReelingIn = false;
         mFishBitten = false;
         mLineTension = 0;
     }
