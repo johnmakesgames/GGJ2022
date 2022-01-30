@@ -27,6 +27,7 @@ public class Quest
                 GameObject.Find("PlayerManager")?.GetComponent<PlayerManager>()?.SetAsActivePlayer("FirstPersonPlayer");
                 break;
             case GoalType.Fishing:
+                GameObject.Find("Pedestrian_HasFish")?.SetActive(true);
                 GameObject.Find("Pedestrian_Sitting 1")?.SetActive(false);
                 break;
             case GoalType.Unpacking:
