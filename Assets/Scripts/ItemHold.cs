@@ -72,6 +72,7 @@ public class ItemHold : MonoBehaviour
                 if (mEquipped)
                 {             
                     Vector3 newPos = mPlayer.transform.position + (mPlayer.transform.forward);
+                    mCurrentOffest.y = mPlayer.transform.position.y + mCurrentOffest.y;
                     this.transform.position = new Vector3(newPos.x, mCurrentOffest.y, newPos.z);
                     this.transform.rotation = mPlayer.transform.rotation;
 
@@ -95,6 +96,7 @@ public class ItemHold : MonoBehaviour
                     mPlayer.GetComponentInChildren<MouseLook>().mClampMouseLook = false;
 
                     Vector3 newPos = mPlayer.transform.position + (mPlayer.transform.forward * -1);
+                    mCurrentOffest.y = mPlayer.transform.position.y + mCurrentOffest.y;
                     this.transform.position = new Vector3(newPos.x, mCurrentOffest.y, newPos.z);
                     this.transform.rotation = mPlayer.transform.rotation;
                 }
@@ -118,6 +120,7 @@ public class ItemHold : MonoBehaviour
         {
             mHeld = true;
             Vector3 newPos = mPlayer.transform.position + (mPlayer.transform.forward * -1);
+            mCurrentOffest.y = mPlayer.transform.position.y + mCurrentOffest.y;
             this.transform.position = new Vector3(newPos.x, mCurrentOffest.y, newPos.z);
             this.transform.rotation = mPlayer.transform.rotation;
             this.transform.parent = mPlayer.transform;
@@ -126,11 +129,11 @@ public class ItemHold : MonoBehaviour
 
     public void UseItem()
     {
-        OnUseItemEvent.Invoke();
+        OnUseItemEvent?.Invoke();
     }
 
     public void EndUseItem()
     {
-        OnItemUseRelease.Invoke();
+        OnItemUseRelease?.Invoke();
     }
 }

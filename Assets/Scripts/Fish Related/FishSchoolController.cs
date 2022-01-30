@@ -24,7 +24,7 @@ public class FishSchoolController : MonoBehaviour
 
         for (int i = 0; i < mFish.Length; ++i)
         {
-            mFish[i].GetComponent<FishController>().NotfiyRodCast(rodTransform);
+            mFish[i]?.GetComponent<FishController>()?.NotfiyRodCast(rodTransform);
         }
     }
 }
