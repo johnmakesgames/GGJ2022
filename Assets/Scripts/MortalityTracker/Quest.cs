@@ -17,5 +17,27 @@ public class Quest
     {
         isActive = false;
         Debug.Log(questTitle + "was completed.");
+
+        switch (goal.goalType)
+        {
+            case GoalType.Assassin:
+                break;
+            case GoalType.CrazyTaxi:
+                GameObject.Find("Pedestrian_Waving")?.SetActive(false);
+                GameObject.Find("PlayerManager")?.GetComponent<PlayerManager>()?.SetAsActivePlayer("FirstPersonPlayer");
+                break;
+            case GoalType.Fishing:
+                break;
+            case GoalType.Unpacking:
+                GameObject.Find("Pedestrian_Sitting 2")?.SetActive(false);
+                GameObject.Find("TELEPORT DOOR")?.SetActive(false);
+                break;
+            case GoalType.Hacker:
+                break;
+            case GoalType.Delivery:
+                break;
+            default:
+                break;
+        }
     }
 }

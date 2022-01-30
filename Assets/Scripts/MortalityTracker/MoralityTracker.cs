@@ -9,7 +9,17 @@ public class MoralityTracker : MonoBehaviour
 
     public Quest currentQuest;
 
-   public void DoQuest()
+    public void SignalActivityCompleted()
+    {
+        currentQuest.goal.currentAmount++;
+    }
+
+    private void Update()
+    {
+        DoQuest();
+    }
+
+    public void DoQuest()
     {
         if (currentQuest.isActive)
         {
@@ -17,11 +27,8 @@ public class MoralityTracker : MonoBehaviour
             if (currentQuest.goal.IsReached())
             {
                 goodBoyPoints += currentQuest.pointsText;
+                currentQuest.Complete();
             }
-
         }
     }
-
-    
-
 }

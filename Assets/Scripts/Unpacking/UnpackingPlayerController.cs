@@ -87,6 +87,8 @@ public class UnpackingPlayerController : MonoBehaviour
         }
     }
 
+    bool isCompleted = false;
+
     void Update()
     {
         if (ItemSpawnerBox)
@@ -99,6 +101,7 @@ public class UnpackingPlayerController : MonoBehaviour
         else
         {
             UIText.text = "NICE! Press space to exit!";
+            isCompleted = true;
         }
 
 
@@ -130,6 +133,11 @@ public class UnpackingPlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
              MoveToFPPMovement();
+
+            if (isCompleted)
+            {
+                this.GetComponent<MoralityTracker>().SignalActivityCompleted();
+            }
         }
     }
 

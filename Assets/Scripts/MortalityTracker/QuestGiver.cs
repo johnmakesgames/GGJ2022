@@ -20,6 +20,8 @@ public class QuestGiver : MonoBehaviour
     public QuestGoal questGoal;
     public GameObject setQuestTarget;
 
+    public GameObject questItemToPlace;
+
     public void OpenQuestWindow()
     {
         questWindow.SetActive(true);
@@ -41,18 +43,21 @@ public class QuestGiver : MonoBehaviour
     public void AcceptQuest()
     {
        
-            if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            questItemToPlace?.SetActive(true);
+            questWindow.SetActive(false);
+            quest.isActive = true;
+            player.currentQuest = quest;
+            questPending = false;
+            questGoal.setTarget = setQuestTarget;
+
+            if (questGoal.goalType == GoalType.CrazyTaxi)   
             {
-                questWindow.SetActive(false);
-                quest.isActive = true;
-                player.currentQuest = quest;
-                questPending = false;
-                questGoal.setTarget = setQuestTarget; 
+                GameObject.Find("PlayerManager").GetComponent<PlayerManager>().SetAsActivePlayer("Car mkV");
+                this.gameObject.SetActive(false);
             }
-        
+
+        }
     }
-        
-        
-        
-    
 }

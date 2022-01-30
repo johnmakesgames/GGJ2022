@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu Scene.unity
     guid: 4a88d9e8e01dd8740a2a7cb99bc61866
   - enabled: 1
+    path: Assets/Scenes/JohnTestSmaller.unity
+    guid: 40be5c6fb89c5934a9c5d764f643c702
+  - enabled: 1
     path: Assets/Scenes/AngTest Scene.unity
     guid: 74afa784836a85d46896edf559e57453
   m_configObjects: {}
