@@ -43,7 +43,6 @@ public class FishingRod : MonoBehaviour
     private void FixedUpdate()
     {
         //Move rod left and right
-        float x = Input.GetAxis("Horizontal");
         /*
         Vector3 move = transform.right * x + transform.forward * z;
         mPlayerController.Move(move * speed * Time.deltaTime);
@@ -51,14 +50,14 @@ public class FishingRod : MonoBehaviour
 
         if(mEquipped)
         {
+            float x = Input.GetAxis("Horizontal");
             Vector3 move = mPlayer.transform.right * x * Time.deltaTime;
-            //clamp to 35 / -35 Z
-
-
+            Debug.Log(this.transform.eulerAngles);
+            Debug.Log(move);
+            
             this.transform.RotateAround(this.transform.position, mPlayer.transform.forward, x * Time.deltaTime * mRotateSpeed);
-            Debug.Log(this.transform.rotation);
         }
-       
+
 
         //Cap left right motion to stay on screen
         //do some fancy quaternion math to make rod rotation nice
@@ -97,8 +96,8 @@ public class FishingRod : MonoBehaviour
             Vector3 movement = new Vector3(mPlayer.transform.forward.x * mCastDistance, 0, mPlayer.transform.forward.z * mCastDistance);
             mFishIndicator.transform.position += new Vector3(mPlayer.transform.forward.x * mCastDistance, 0f, mPlayer.transform.forward.z * mCastDistance);// mPlayer.transform.forward * mCastDistance;
             mFishIndicator.transform.parent = null;
-            Debug.Log(movement);
-            Debug.Log("Cast line");
+           // Debug.Log(movement);
+           // Debug.Log("Cast line");
             mRodActive = true;
             NotifyFishRodCast();
         }
@@ -136,7 +135,6 @@ public class FishingRod : MonoBehaviour
     public void EndUseRod()
     {
         ReelInLine();
-        mEquipped = false;
     }
 
     public void ReelInLine()
@@ -149,14 +147,19 @@ public class FishingRod : MonoBehaviour
 
     public void OnEquipped()
     {
+        Debug.Log("rod equipped");
+
         mEquipped = !mEquipped;
+
+        this.transform.eulerAngles += new Vector3(50, 0, 0);
+
         //place in front of player
     }
 
     void ImmediateReelIn()
     {
         Debug.Log("Reel In immediate");
-        mFishIndicator.transform.position = this.transform.position + mOffsetFromRod;
+        mFishIndicator.transform.position = mTopOfRod.position;
     }
 
     void NotifyFishRodCast()

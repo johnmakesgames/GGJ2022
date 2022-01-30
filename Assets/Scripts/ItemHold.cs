@@ -21,7 +21,8 @@ public class ItemHold : MonoBehaviour
     public Vector3 mEquippedRotation;
     private Quaternion mInitialRotation;
 
-    
+   
+    float mCooldown = 0f;
     bool mEquipped = false;
     bool mHeld = false;
 
@@ -59,6 +60,9 @@ public class ItemHold : MonoBehaviour
                 }
             }
 
+            mCooldown += Time.deltaTime;
+
+
 
             if (Input.GetMouseButtonUp(1))
             {
@@ -67,11 +71,11 @@ public class ItemHold : MonoBehaviour
 
                 if (mEquipped)
                 {             
-                    OnItemEquipped.Invoke();
-
                     Vector3 newPos = mPlayer.transform.position + (mPlayer.transform.forward);
                     this.transform.position = new Vector3(newPos.x, mCurrentOffest.y, newPos.z);
                     this.transform.rotation = mPlayer.transform.rotation;
+
+                    OnItemEquipped.Invoke();
 
                     if (mFreezePlayerMovementWhenUsingItem)
                     {
@@ -84,7 +88,9 @@ public class ItemHold : MonoBehaviour
                     }
                 }
                 else
-                { 
+                {
+                    OnItemEquipped.Invoke();
+
                     mPlayer.GetComponent<PlayerMovement>().mPlayerFixedLocation = false;
                     mPlayer.GetComponentInChildren<MouseLook>().mClampMouseLook = false;
 
