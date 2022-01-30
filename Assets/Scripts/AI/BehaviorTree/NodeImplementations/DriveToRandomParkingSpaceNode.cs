@@ -35,7 +35,7 @@ public class DriveToRandomParkingSpaceNode : ActionNode
         }
 
 
-        if (distance > 0.6f)
+        if (distance > 2.0f)
         {
             return NodeStates.Running;
         }

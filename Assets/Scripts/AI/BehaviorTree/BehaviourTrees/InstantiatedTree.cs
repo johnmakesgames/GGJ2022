@@ -1,3 +1,4 @@
+using UnityEngine;
 /// <summary>
 /// Class for Instantiating Behaviour Trees
 /// </summary>
@@ -35,7 +36,7 @@ public class InstantiatedTree
     /// </summary>
     private static BehaviourTree GetTestAgentTree()
     {
-        var tree = new BehaviourTree();
+        var tree = ScriptableObject.CreateInstance<BehaviourTree>();
             var repeater = (RepeaterNode)tree.CreateNode(typeof(RepeaterNode));
                 var decision = (DecisionNode)tree.CreateNode(typeof(DecisionNode));
                 decision.Comparator = () => { return true; };

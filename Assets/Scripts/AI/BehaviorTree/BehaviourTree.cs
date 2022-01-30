@@ -10,6 +10,11 @@ public class BehaviourTree : ScriptableObject
     public INode.NodeStates treeState = INode.NodeStates.Running;
     public List<INode> allTreeNodes = new List<INode>();
 
+    public BehaviourTree()
+    {
+        allTreeNodes = new List<INode>();
+    }
+
     private GameObject m_Parent;
     public GameObject Parent
     {
