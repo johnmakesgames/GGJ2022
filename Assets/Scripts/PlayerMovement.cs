@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -50,6 +48,15 @@ public class PlayerMovement : MonoBehaviour
             mPlayerVelocity.y -= gravity * Time.deltaTime;
 
             mPlayerController.Move(mPlayerVelocity * Time.deltaTime);
+
+            if (x != 0 || z != 0)
+            {
+                this.GetComponent<Animator>().SetBool("Moving", true);
+            }
+            else
+            {
+                this.GetComponent<Animator>().SetBool("Moving", false);
+            }
         }       
     }
 

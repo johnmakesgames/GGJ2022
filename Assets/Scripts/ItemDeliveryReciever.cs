@@ -20,6 +20,7 @@ public class ItemDeliveryReciever : MonoBehaviour
                     {
                         Debug.Log("QUEST FINISHED");
                         QuestStarter.HasBeenFinished = true;
+                        inventory.gameObject.GetComponent<MoralityTracker>().SignalActivityCompleted();
                     }
                     else
                     {
