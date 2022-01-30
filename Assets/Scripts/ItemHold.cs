@@ -34,7 +34,7 @@ public class ItemHold : MonoBehaviour
 
             if (mEquipped)
             {
-                Vector3 newPos = mPlayer.transform.position + (mPlayer.transform.forward * 10); // keep
+                Vector3 newPos = mPlayer.transform.position + (mPlayer.transform.forward); // keep
                 this.transform.position = new Vector3(newPos.x, mCurrentOffest.y, newPos.z);
                 this.transform.rotation = mPlayer.transform.rotation ;
 
