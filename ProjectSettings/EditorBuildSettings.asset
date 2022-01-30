@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AngTest Scene.unity
     guid: 74afa784836a85d46896edf559e57453
+  - enabled: 1
+    path: Assets/Scenes/GoodEnding.unity
+    guid: 88472bf97d76c804f9858ab4f4fe5c52
+  - enabled: 1
+    path: Assets/Scenes/BadEnding.unity
+    guid: c54a5b1dd99ba314da6783cdc22b5bb4
   m_configObjects: {}
