@@ -20,6 +20,9 @@ public class InstantiatedTree
             case "TestCarTree":
                 tree = GetTestCarAgentTree();
                 break;
+            case "WaitAroundTree":
+                tree = GetWaitAroundAgentTree();
+                break;
             default:
                 break;
         }
@@ -44,6 +47,14 @@ public class InstantiatedTree
             repeater.child = decision;
         tree.rootNode = repeater;
 
+        return tree;
+    }
+
+    private static BehaviourTree GetWaitAroundAgentTree()
+    {
+        var tree = new BehaviourTree();
+        var node = tree.CreateNode(typeof(WaitNode));
+        tree.rootNode = node;
         return tree;
     }
 

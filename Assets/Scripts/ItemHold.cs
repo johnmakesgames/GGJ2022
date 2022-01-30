@@ -9,16 +9,21 @@ public class ItemHold : MonoBehaviour
     private UnityEvent OnUseItemEvent;
     [SerializeField]
     private UnityEvent OnItemUseRelease;
+    [SerializeField]
+    private UnityEvent OnItemEquipped;
 
     public GameObject mPlayer;
-    public Vector3 mOffest;
+    public Vector3 mCurrentOffest;
+    public Vector3 mEquippedRotation;
+    private Quaternion mInitialRotation;
 
+    bool mEquipped = false;
     bool mHeld = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        mInitialRotation = this.transform.rotation;
     }
 
     // Update is called once per frame
@@ -26,24 +31,49 @@ public class ItemHold : MonoBehaviour
     {
         if(mHeld)
         {
-            this.transform.position = mPlayer.transform.position + mOffest;
 
-            if(Input.GetMouseButtonDown(0))
+            if (mEquipped)
             {
-                UseItem();
-            }
+                Vector3 newPos = mPlayer.transform.position + (mPlayer.transform.forward * 10); // keep
+                this.transform.position = new Vector3(newPos.x, mCurrentOffest.y, newPos.z);
+                this.transform.rotation = mPlayer.transform.rotation ;
 
-            if(Input.GetMouseButtonUp(0))
-            {
-                EndUseItem();
+                if (Input.GetMouseButtonDown(0))
+                {
+                    UseItem();
+                }
+
+                if (Input.GetMouseButtonUp(0))
+                {
+                    EndUseItem();
+                }
             }
+            else
+            {
+                this.transform.position = mPlayer.transform.position + mCurrentOffest;
+
+            }
+        
+            if (Input.GetMouseButtonUp(1))
+            {
+                Debug.Log("item equipped");
+                mEquipped = !mEquipped;
+
+                if (mEquipped)
+                {             
+                    OnItemEquipped.Invoke();
+                }
+
+            }
+            
         }
-
     }
+
     public void OnDestroy()
     {
         OnUseItemEvent.RemoveAllListeners();
         OnItemUseRelease.RemoveAllListeners();
+        OnItemEquipped.RemoveAllListeners();
     }
 
     public void InteractWithItem() //pick up and drop
