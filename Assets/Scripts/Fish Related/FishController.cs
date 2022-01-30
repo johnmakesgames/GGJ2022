@@ -8,8 +8,7 @@ public class FishController : MonoBehaviour
     [SerializeField]
     private UnityEvent OnBiteRodEvent;
 
-    [SerializeField]
-    private float mSwimRadius = 10f;
+ 
     [SerializeField]
     private float mInterstRadius = 10f;
     [SerializeField]
@@ -25,6 +24,11 @@ public class FishController : MonoBehaviour
 
     bool mRodCast = false;
     bool mCaught = false;
+    bool mStruggling = false;
+
+    float mCurrentActivityTime = 0f;
+    float mStruggleTime = 10f;
+    float mRecargeTime = 5f;
 
     // Start is called before the first frame update
     void Start()
@@ -66,6 +70,33 @@ public class FishController : MonoBehaviour
             {
                 PassiveSwim();
             }
+        }
+        else
+        {
+            if(mStruggling)
+            {
+                //swim left and right
+                mCurrentActivityTime += Time.deltaTime;
+
+
+
+                if (mCurrentActivityTime >= mStruggleTime)
+                {
+                    mCurrentActivityTime = 0;
+                    mStruggling = false;
+                }
+            }
+            else
+            {
+                mCurrentActivityTime += Time.deltaTime;
+
+                if(mCurrentActivityTime >= mRecargeTime)
+                {
+                    mCurrentActivityTime = 0;
+                    mStruggling = true;
+                }
+            }
+           
         }
     }
 

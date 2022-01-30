@@ -23,6 +23,9 @@ public class FishingRod : MonoBehaviour
 
     FishController mBittenFish;
 
+    float mLineTension = 0f;
+    float mMaxLineTension = 10f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,16 +56,35 @@ public class FishingRod : MonoBehaviour
 
                 SuccessfulCatch();
             }
+
+            if(mLineTension >= mMaxLineTension)
+            {
+                LineBreak();
+            }
+
+
+            //Move rod left and right
+            float x = Input.GetAxis("Horizontal");
+ 
+            /*
+            Vector3 move = transform.right * x + transform.forward * z;
+            mPlayerController.Move(move * speed * Time.deltaTime);
+            */
+            Vector3 move = mPlayer.transform.right * x * 10;
+            this.transform.position += move;
+
         }
     }
     public void CastLine()
     {
         if(!mRodActive)
         {
+            mPlayer.GetComponent<Animator>().SetTrigger("BeginFish");
+            mPlayer.GetComponent<Animator>().SetBool("Fishing", true);
             //Fire indicator to x distance in look direction
             Vector3 movement = new Vector3(mPlayer.transform.forward.x * mCastDistance, 0, mPlayer.transform.forward.z * mCastDistance);
-            mFishIndicator.transform.position += new Vector3(mPlayer.transform.forward.x * mCastDistance, -20f, mPlayer.transform.forward.z * mCastDistance);// mPlayer.transform.forward * mCastDistance;
-           
+            mFishIndicator.transform.position += new Vector3(mPlayer.transform.forward.x * mCastDistance, 0f, mPlayer.transform.forward.z * mCastDistance);// mPlayer.transform.forward * mCastDistance;
+            mFishIndicator.transform.parent = null;
             Debug.Log(movement);
             Debug.Log("Cast line");
             mRodActive = true;
@@ -80,6 +102,23 @@ public class FishingRod : MonoBehaviour
                 ImmediateReelIn();
             }
         }
+    }
+
+
+    void LineBreak()
+    {
+        FailedCatch();
+        ImmediateReelIn();
+    }
+
+    void IncreaseLineTension(float val)
+    {
+        mLineTension += val;
+    }
+
+    void ReduceLineTension(float val)
+    {
+        mLineTension -= val;
     }
 
     public void ReelInLine()
@@ -119,6 +158,9 @@ public class FishingRod : MonoBehaviour
 
     void SuccessfulCatch()
     {
+        mFishIndicator.transform.SetParent(this.transform);
+        Debug.Log("Succesful catch");
+
         //play animation and add to inventory
         mReelingIn = false;
         mRodActive = false;
@@ -127,11 +169,16 @@ public class FishingRod : MonoBehaviour
         mBittenFish.OnCaught();
         mBittenFish = null;
         ImmediateReelIn();
+        mLineTension = 0;
     }
 
     void FailedCatch()
     {
+        Debug.Log("failed catch");
+
+        mFishIndicator.transform.SetParent(this.transform);
         mRodActive = false;
         mFishBitten = false;
+        mLineTension = 0;
     }
 }
