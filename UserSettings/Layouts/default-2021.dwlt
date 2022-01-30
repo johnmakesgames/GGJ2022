@@ -25,7 +25,11 @@ MonoBehaviour:
   m_RootView: {fileID: 8}
 =======
   m_Title: Hierarchy
+<<<<<<< HEAD
   m_RootView: {fileID: 7}
+>>>>>>> Animation
+=======
+  m_RootView: {fileID: 9}
 >>>>>>> Animation
   m_MinSize: {x: 875, y: 300}
 =======
@@ -50,6 +54,60 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+  m_Name: ConsoleWindow
+  m_EditorClassIdentifier: 
+  m_Children: []
+  m_Position:
+    serializedVersion: 2
+    x: 820
+    y: 0
+    width: 646
+    height: 387
+  m_MinSize: {x: 102, y: 121}
+  m_MaxSize: {x: 4002, y: 4021}
+  m_ActualView: {fileID: 20}
+  m_Panes:
+  - {fileID: 20}
+  m_Selected: 0
+  m_LastSelected: 0
+--- !u!114 &3
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Children:
+  - {fileID: 8}
+  - {fileID: 2}
+  m_Position:
+    serializedVersion: 2
+    x: 0
+    y: 560
+    width: 1466
+    height: 387
+  m_MinSize: {x: 200, y: 100}
+  m_MaxSize: {x: 16192, y: 8096}
+  vertical: 0
+  controlID: 316
+--- !u!114 &4
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
+>>>>>>> Animation
   m_Name: SceneView
 =======
   m_Name: SceneHierarchyWindow
@@ -74,10 +132,11 @@ MonoBehaviour:
     y: 0
     width: 368
     height: 560
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 16}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
+  m_ActualView: {fileID: 18}
   m_Panes:
+<<<<<<< HEAD
   - {fileID: 16}
 >>>>>>> Animation
 =======
@@ -91,9 +150,12 @@ MonoBehaviour:
   m_Panes:
   - {fileID: 14}
 >>>>>>> CarCollisions
+=======
+  - {fileID: 18}
+>>>>>>> Animation
   m_Selected: 0
   m_LastSelected: 0
---- !u!114 &3
+--- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,8 +201,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Children:
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: 11}
   - {fileID: 3}
+=======
+  - {fileID: 12}
+  - {fileID: 6}
+>>>>>>> Animation
   m_Position:
     serializedVersion: 2
     x: 0
@@ -158,6 +225,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
+<<<<<<< HEAD
   controlID: 2721
 --- !u!114 &4
 >>>>>>> Animation
@@ -176,6 +244,10 @@ MonoBehaviour:
   controlID: 76
 --- !u!114 &4
 >>>>>>> CarCollisions
+=======
+  controlID: 79
+--- !u!114 &6
+>>>>>>> Animation
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -214,6 +286,7 @@ MonoBehaviour:
     y: 0
     width: 454
     height: 947
+<<<<<<< HEAD
   m_MinSize: {x: 275, y: 50}
   m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
@@ -240,6 +313,16 @@ MonoBehaviour:
   controlID: 74
 --- !u!114 &5
 >>>>>>> CarCollisions
+=======
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
+  m_ActualView: {fileID: 16}
+  m_Panes:
+  - {fileID: 16}
+  m_Selected: 0
+  m_LastSelected: 0
+--- !u!114 &7
+>>>>>>> Animation
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -268,10 +351,11 @@ MonoBehaviour:
 =======
     width: 363
     height: 560
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 15}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
+  m_ActualView: {fileID: 17}
   m_Panes:
+<<<<<<< HEAD
   - {fileID: 15}
 >>>>>>> Animation
   m_Selected: 0
@@ -289,6 +373,12 @@ MonoBehaviour:
   m_LastSelected: 0
 --- !u!114 &6
 >>>>>>> CarCollisions
+=======
+  - {fileID: 17}
+  m_Selected: 0
+  m_LastSelected: 0
+--- !u!114 &8
+>>>>>>> Animation
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -310,6 +400,7 @@ MonoBehaviour:
     x: 0
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     y: 741
     width: 1466
     height: 326
@@ -325,6 +416,10 @@ MonoBehaviour:
 =======
     y: 560
     width: 1466
+=======
+    y: 0
+    width: 820
+>>>>>>> Animation
     height: 387
 =======
     y: 967.3333
@@ -333,17 +428,21 @@ MonoBehaviour:
 >>>>>>> CarCollisions
   m_MinSize: {x: 231, y: 271}
   m_MaxSize: {x: 10001, y: 10021}
-  m_ActualView: {fileID: 13}
+  m_ActualView: {fileID: 15}
   m_Panes:
-  - {fileID: 13}
-  - {fileID: 18}
+  - {fileID: 15}
   m_Selected: 0
+<<<<<<< HEAD
   m_LastSelected: 1
 --- !u!114 &7
 <<<<<<< HEAD
 >>>>>>> Animation
 =======
 >>>>>>> CarCollisions
+=======
+  m_LastSelected: 0
+--- !u!114 &9
+>>>>>>> Animation
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -356,6 +455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children:
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   - {fileID: 9}
@@ -371,6 +471,11 @@ MonoBehaviour:
   - {fileID: 4}
   - {fileID: 9}
 >>>>>>> CarCollisions
+=======
+  - {fileID: 10}
+  - {fileID: 5}
+  - {fileID: 11}
+>>>>>>> Animation
   m_Position:
     serializedVersion: 2
     x: 0
@@ -390,6 +495,7 @@ MonoBehaviour:
   m_BottomViewHeight: 20
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!114 &9
 =======
 --- !u!114 &8
@@ -397,6 +503,9 @@ MonoBehaviour:
 =======
 --- !u!114 &8
 >>>>>>> CarCollisions
+=======
+--- !u!114 &10
+>>>>>>> Animation
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -424,6 +533,7 @@ MonoBehaviour:
   m_LastLoadedLayoutName: 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!114 &10
 =======
 --- !u!114 &9
@@ -431,6 +541,9 @@ MonoBehaviour:
 =======
 --- !u!114 &9
 >>>>>>> CarCollisions
+=======
+--- !u!114 &11
+>>>>>>> Animation
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -457,6 +570,7 @@ MonoBehaviour:
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!114 &11
 =======
 --- !u!114 &10
@@ -469,6 +583,9 @@ MonoBehaviour:
   m_MaxSize: {x: 0, y: 0}
 --- !u!114 &10
 >>>>>>> CarCollisions
+=======
+--- !u!114 &12
+>>>>>>> Animation
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -483,6 +600,7 @@ MonoBehaviour:
   m_Children:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: 12}
   - {fileID: 7}
 =======
@@ -493,6 +611,10 @@ MonoBehaviour:
   - {fileID: 3}
   - {fileID: 6}
 >>>>>>> CarCollisions
+=======
+  - {fileID: 13}
+  - {fileID: 3}
+>>>>>>> Animation
   m_Position:
     serializedVersion: 2
     x: 0
@@ -511,8 +633,13 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
+<<<<<<< HEAD
   controlID: 2722
 --- !u!114 &11
+>>>>>>> Animation
+=======
+  controlID: 84
+--- !u!114 &13
 >>>>>>> Animation
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -527,12 +654,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Children:
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: 6}
   - {fileID: 13}
 =======
   - {fileID: 5}
   - {fileID: 2}
   - {fileID: 12}
+>>>>>>> Animation
+=======
+  - {fileID: 7}
+  - {fileID: 4}
+  - {fileID: 14}
 >>>>>>> Animation
   m_Position:
     serializedVersion: 2
@@ -551,6 +684,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
+<<<<<<< HEAD
   controlID: 2723
 --- !u!114 &12
 >>>>>>> Animation
@@ -563,6 +697,10 @@ MonoBehaviour:
   controlID: 75
 --- !u!114 &11
 >>>>>>> CarCollisions
+=======
+  controlID: 85
+--- !u!114 &14
+>>>>>>> Animation
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -647,14 +785,18 @@ MonoBehaviour:
     y: 0
     width: 735
     height: 560
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 17}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
+  m_ActualView: {fileID: 19}
   m_Panes:
-  - {fileID: 17}
+  - {fileID: 19}
   m_Selected: 0
   m_LastSelected: 0
+<<<<<<< HEAD
 --- !u!114 &13
+>>>>>>> Animation
+=======
+--- !u!114 &15
 >>>>>>> Animation
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -714,7 +856,7 @@ MonoBehaviour:
     height: 305
 =======
     y: 633
-    width: 1465
+    width: 819
     height: 366
 >>>>>>> Animation
 =======
@@ -741,6 +883,7 @@ MonoBehaviour:
     m_Folders:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     - Assets/FarlandSkies/Skyboxes/CloudyCrown_02_Evening
 =======
     - Assets/Prefabs
@@ -748,11 +891,15 @@ MonoBehaviour:
 =======
     - Assets/Prefabs/Car
 >>>>>>> CarCollisions
+=======
+    - Assets/Prefabs/Fishing Prefabs
+>>>>>>> Animation
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   - Assets/FarlandSkies/Skyboxes/CloudyCrown_02_Evening
@@ -771,12 +918,16 @@ MonoBehaviour:
     m_ExpandedIDs: 00000000e4bb000006bc000012bc000016bc00009e4f0500185205005272050000ca9a3bffffff7f
 =======
   - Assets/Prefabs
+=======
+  - Assets/Prefabs/Fishing Prefabs
+>>>>>>> Animation
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Users\h017026h\Documents\GitKraken\GGJ2022
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 26}
+<<<<<<< HEAD
     m_SelectedIDs: e6800000
     m_LastClickedID: 32998
     m_ExpandedIDs: 0000000060800000628000006480000066800000688000006a80000000ca9a3b
@@ -787,6 +938,11 @@ MonoBehaviour:
     m_LastClickedID: 51612
     m_ExpandedIDs: 0000000042c9000044c9000046c9000048c9000000ca9a3bffffff7f
 >>>>>>> CarCollisions
+=======
+    m_SelectedIDs: 3a5c0000
+    m_LastClickedID: 23610
+    m_ExpandedIDs: 00000000045c0000065c0000085c00000a5c00000c5c00000e5c0000225c000000ca9a3b
+>>>>>>> Animation
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -816,6 +972,7 @@ MonoBehaviour:
     m_LastClickedID: 0
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_ExpandedIDs: 00000000e4bb0000
 =======
     m_ExpandedIDs: 0000000060800000628000006480000066800000688000006a800000
@@ -823,6 +980,9 @@ MonoBehaviour:
 =======
     m_ExpandedIDs: 0000000042c9000044c9000046c9000048c90000
 >>>>>>> CarCollisions
+=======
+    m_ExpandedIDs: 00000000045c0000065c0000085c00000a5c00000c5c00000e5c0000
+>>>>>>> Animation
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -850,10 +1010,14 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_HadKeyboardFocusLastEvent: 1
 =======
     m_HadKeyboardFocusLastEvent: 0
 <<<<<<< HEAD
+>>>>>>> Animation
+=======
+    m_HadKeyboardFocusLastEvent: 1
 >>>>>>> Animation
     m_ExpandedInstanceIDs: c6230000
 =======
@@ -876,6 +1040,7 @@ MonoBehaviour:
       m_IsRenamingFilename: 1
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       m_ClientGUIView: {fileID: 7}
 =======
       m_ClientGUIView: {fileID: 0}
@@ -883,6 +1048,9 @@ MonoBehaviour:
 =======
       m_ClientGUIView: {fileID: 6}
 >>>>>>> CarCollisions
+=======
+      m_ClientGUIView: {fileID: 8}
+>>>>>>> Animation
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -893,11 +1061,16 @@ MonoBehaviour:
     m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 64
   m_SkipHiddenPackages: 0
+<<<<<<< HEAD
   m_DirectoriesAreaWidth: 207
 <<<<<<< HEAD
 --- !u!114 &17
 =======
 --- !u!114 &14
+>>>>>>> Animation
+=======
+  m_DirectoriesAreaWidth: 296
+--- !u!114 &16
 >>>>>>> Animation
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -977,7 +1150,11 @@ MonoBehaviour:
 =======
     m_IsLocked: 0
   m_PreviewWindow: {fileID: 0}
+<<<<<<< HEAD
 --- !u!114 &15
+>>>>>>> Animation
+=======
+--- !u!114 &17
 >>>>>>> Animation
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1029,11 +1206,15 @@ MonoBehaviour:
       m_SelectedIDs: 
       m_LastClickedID: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
       m_ExpandedIDs: e0d2ffff567e0000
 >>>>>>> Animation
 =======
       m_ExpandedIDs: 3afbffff
 >>>>>>> CarCollisions
+=======
+      m_ExpandedIDs: 16faffff3afbffffe2590000
+>>>>>>> Animation
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: Quest Givers
@@ -1066,9 +1247,13 @@ MonoBehaviour:
     m_CurrentSortingName: TransformSorting
   m_WindowGUID: 4c969a2b90040154d917609493e03593
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!114 &19
 =======
 --- !u!114 &16
+>>>>>>> Animation
+=======
+--- !u!114 &18
 >>>>>>> Animation
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1415,9 +1600,13 @@ MonoBehaviour:
   m_LastLockedObject: {fileID: 0}
   m_ViewIsLockedToObject: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!114 &20
 =======
 --- !u!114 &17
+>>>>>>> Animation
+=======
+--- !u!114 &19
 >>>>>>> Animation
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1581,9 +1770,13 @@ MonoBehaviour:
   m_XRRenderMode: 0
   m_RenderTexture: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!114 &21
 =======
 --- !u!114 &18
+>>>>>>> Animation
+=======
+--- !u!114 &20
 >>>>>>> Animation
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1606,6 +1799,7 @@ MonoBehaviour:
     serializedVersion: 2
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 0
     y: 814
     width: 1465
@@ -1622,6 +1816,12 @@ MonoBehaviour:
     width: 1996.3334
     height: 359.00006
 >>>>>>> CarCollisions
+=======
+    x: 820
+    y: 633
+    width: 644
+    height: 366
+>>>>>>> Animation
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default

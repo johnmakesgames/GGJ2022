@@ -6,6 +6,8 @@ public class FishingRod : MonoBehaviour
 {
     [SerializeField]
     private FishSchoolController mFishController;
+    [SerializeField]
+    private float mRotateSpeed = 10;
 
     public GameObject mFishIndicator;
     public GameObject mPlayer;
@@ -40,7 +42,29 @@ public class FishingRod : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(mReelingIn)
+        //Move rod left and right
+        float x = Input.GetAxis("Horizontal");
+        /*
+        Vector3 move = transform.right * x + transform.forward * z;
+        mPlayerController.Move(move * speed * Time.deltaTime);
+        */
+
+        if(mEquipped)
+        {
+            Vector3 move = mPlayer.transform.right * x * Time.deltaTime;
+            //clamp to 35 / -35 Z
+
+
+            this.transform.RotateAround(this.transform.position, mPlayer.transform.forward, x * Time.deltaTime * mRotateSpeed);
+            Debug.Log(this.transform.rotation);
+        }
+       
+
+        //Cap left right motion to stay on screen
+        //do some fancy quaternion math to make rod rotation nice
+
+
+        if (mReelingIn)
         {
             Vector3 movementDir = mTopOfRod.position - mFishIndicator.transform.position;
 
@@ -61,18 +85,6 @@ public class FishingRod : MonoBehaviour
             {
                 LineBreak();
             }
-
-
-            //Move rod left and right
-            float x = Input.GetAxis("Horizontal");
- 
-            /*
-            Vector3 move = transform.right * x + transform.forward * z;
-            mPlayerController.Move(move * speed * Time.deltaTime);
-            */
-            Vector3 move = mPlayer.transform.right * x * 10;
-            this.transform.position += move;
-
         }
     }
     public void CastLine()
@@ -119,6 +131,12 @@ public class FishingRod : MonoBehaviour
     void ReduceLineTension(float val)
     {
         mLineTension -= val;
+    }
+
+    public void EndUseRod()
+    {
+        ReelInLine();
+        mEquipped = false;
     }
 
     public void ReelInLine()

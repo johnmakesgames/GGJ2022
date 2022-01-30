@@ -10,7 +10,6 @@ public class FishingLine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       // mFishLineRenderer = GetComponent<LineRenderer>();
     }
 
     // Update is called once per frame
