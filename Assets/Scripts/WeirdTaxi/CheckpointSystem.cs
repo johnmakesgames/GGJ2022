@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class CheckpointSystem : MonoBehaviour
 {
@@ -15,6 +17,8 @@ public class CheckpointSystem : MonoBehaviour
 
     private List<SingleCheckpoint> SingleCheckPointList;
     private int NextCheckpointIndex;
+    public Text CheckpointNumber;
+
 
 
     private void Start()
@@ -57,7 +61,8 @@ public class CheckpointSystem : MonoBehaviour
         if(SingleCheckPointList.IndexOf(singleCheckpoint) == NextCheckpointIndex)
         {
             //correct checkpoint
-            NextCheckpointIndex = (NextCheckpointIndex + 1) % SingleCheckPointList.Count;
+            NextCheckpointIndex = (NextCheckpointIndex + 1);
+            CheckpointNumber.text = $"{NextCheckpointIndex}/{SingleCheckPointList.Count}";
         }
         else
         {
