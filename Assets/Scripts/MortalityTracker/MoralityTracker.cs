@@ -9,16 +9,19 @@ public class MoralityTracker : MonoBehaviour
 
     public Quest currentQuest;
 
-    public void CompleteGoodTask()
+   public void DoQuest()
     {
-        goodBoyPoints += 1;
+        if (currentQuest.isActive)
+        {
+            currentQuest.goal.EnemyKilled();
+            if (currentQuest.goal.IsReached())
+            {
+                goodBoyPoints += currentQuest.pointsText;
+            }
+
+        }
     }
 
-    public void CompletedBadTask()
-    {
-        badBoyPoints += 1;
-    }
-
-
+    
 
 }

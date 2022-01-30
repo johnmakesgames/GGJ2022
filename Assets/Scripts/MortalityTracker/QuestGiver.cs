@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class QuestGiver : MonoBehaviour
 {
     public Quest quest;
+    
 
     public MoralityTracker player;
 
@@ -13,7 +14,11 @@ public class QuestGiver : MonoBehaviour
     public Text tilteText;
     public Text descriptionText;
     public Text pointsText;
+
     public bool questPending = false;
+
+    public QuestGoal questGoal;
+    public GameObject setQuestTarget;
 
     public void OpenQuestWindow()
     {
@@ -41,7 +46,8 @@ public class QuestGiver : MonoBehaviour
                 questWindow.SetActive(false);
                 quest.isActive = true;
                 player.currentQuest = quest;
-                Debug.Log("quest accepted");
+                questPending = false;
+                questGoal.setTarget = setQuestTarget; 
             }
         
     }
