@@ -59,9 +59,20 @@ public class FishingRod : MonoBehaviour
 
             if(mLineTension >= mMaxLineTension)
             {
-                //
                 LineBreak();
             }
+
+
+            //Move rod left and right
+            float x = Input.GetAxis("Horizontal");
+ 
+            /*
+            Vector3 move = transform.right * x + transform.forward * z;
+            mPlayerController.Move(move * speed * Time.deltaTime);
+            */
+            Vector3 move = mPlayer.transform.right * x * 10;
+            this.transform.position += move;
+
         }
     }
     public void CastLine()

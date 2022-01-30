@@ -11,12 +11,17 @@ public class ItemHold : MonoBehaviour
     private UnityEvent OnItemUseRelease;
     [SerializeField]
     private UnityEvent OnItemEquipped;
+    [SerializeField]
+    private bool mFreezePlayerWhenUsingItem = false;
+    [SerializeField]
+    private bool mAllowEquippedItemMovement = false;
 
     public GameObject mPlayer;
     public Vector3 mCurrentOffest;
     public Vector3 mEquippedRotation;
     private Quaternion mInitialRotation;
 
+    
     bool mEquipped = false;
     bool mHeld = false;
 
@@ -62,7 +67,20 @@ public class ItemHold : MonoBehaviour
                 if (mEquipped)
                 {             
                     OnItemEquipped.Invoke();
+
+                    if (mFreezePlayerWhenUsingItem)
+                    {
+                        mPlayer.GetComponent<PlayerMovement>().mPlayerFixedLocation = true;
+                        mPlayer.GetComponentInChildren<MouseLook>().mClampMouseLook = true;
+                    }
                 }
+                else
+                { 
+                    mPlayer.GetComponent<PlayerMovement>().mPlayerFixedLocation = false;
+                    mPlayer.GetComponentInChildren<MouseLook>().mClampMouseLook = false;
+                }
+
+
 
             }
             
