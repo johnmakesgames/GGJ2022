@@ -52,8 +52,8 @@ public class FishingRod : MonoBehaviour
         {
             float x = Input.GetAxis("Horizontal");
             Vector3 move = mPlayer.transform.right * x * Time.deltaTime;
-            Debug.Log(this.transform.eulerAngles);
-            Debug.Log(move);
+            //Debug.Log(this.transform.eulerAngles);
+            //Debug.Log(move);
             
             this.transform.RotateAround(this.transform.position, mPlayer.transform.forward, x * Time.deltaTime * mRotateSpeed);
         }

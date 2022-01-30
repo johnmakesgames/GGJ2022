@@ -25,10 +25,13 @@ public class FishController : MonoBehaviour
     bool mRodCast = false;
     bool mCaught = false;
     bool mStruggling = false;
+    bool mSwimRight = true;
 
     float mCurrentActivityTime = 0f;
     float mStruggleTime = 10f;
     float mRecargeTime = 5f;
+    float mMaxDistanceBeforeSwitch = 10f;
+    Vector3 mStartingPos;
 
     // Start is called before the first frame update
     void Start()
@@ -78,7 +81,26 @@ public class FishController : MonoBehaviour
                 //swim left and right
                 mCurrentActivityTime += Time.deltaTime;
 
+                if(mMaxDistanceBeforeSwitch <= Vector3.Distance(mStartingPos, this.transform.position))
+                {
+                    mSwimRight = !mSwimRight;
+                }
 
+                //Vector3 right = this.GetComponent<FishingRod>().mPlayer.transform.right;
+                Vector3 right = new Vector3(1,0,0); //TEMP get player right vector
+                if(mSwimRight)
+                {
+                    this.transform.forward = right;
+
+                }
+                else
+                {
+                    this.transform.forward = -right;
+
+                }
+                Debug.Log("struggling");
+
+                this.transform.position += this.transform.forward * mSwimSpeed * Time.deltaTime;
 
                 if (mCurrentActivityTime >= mStruggleTime)
                 {
@@ -94,6 +116,7 @@ public class FishController : MonoBehaviour
                 {
                     mCurrentActivityTime = 0;
                     mStruggling = true;
+                    mSwimRight = !mSwimRight;
                 }
             }
            
@@ -138,6 +161,8 @@ public class FishController : MonoBehaviour
         //Notfiy player/rod of the bite
         OnBiteRodEvent.Invoke();
         mCaught = true;
+        mStruggling = true;
+        mStartingPos = transform.position;
     }
 
     public void OnCaught()
