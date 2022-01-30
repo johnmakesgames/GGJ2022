@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1698121668648765798, guid: 0eb8a538688fe6742b6601c4172b8e6a, type: 3}
+      propertyPath: m_Name
+      value: RoamingCar_Mustang
+      objectReference: {fileID: 0}
     - target: {fileID: 2039892716371163712, guid: 0eb8a538688fe6742b6601c4172b8e6a, type: 3}
       propertyPath: m_RootOrder
       value: 0
