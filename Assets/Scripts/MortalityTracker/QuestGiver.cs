@@ -58,6 +58,10 @@ public class QuestGiver : MonoBehaviour
                 this.gameObject.SetActive(false);
             }
 
+            if (questGoal.goalType == GoalType.Delivery)
+            {
+                this.GetComponent<ItemDeliverySender>().StartQuest();
+            }
         }
     }
 }

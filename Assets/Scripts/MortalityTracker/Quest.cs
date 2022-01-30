@@ -37,6 +37,8 @@ public class Quest
             case GoalType.Hacker:
                 break;
             case GoalType.Delivery:
+                GameObject.Find("Pedestrian_Waving 2")?.SetActive(false);
+                GameObject.Find("Pedestrian_Waving 3")?.SetActive(false);
                 break;
             default:
                 break;
