@@ -22,7 +22,6 @@ public class DriveToRandomParkingSpaceNode : ActionNode
     public override NodeStates OnUpdate()
     {
         float distance = Vector3.Distance(parent.transform.position, positionToGoTo);
-        Debug.Log($"Distance to Goal {distance}");
 
         if (parent.GetComponent<UnityEngine.AI.NavMeshAgent>().isOnOffMeshLink && !onLink)
         {
@@ -36,7 +35,7 @@ public class DriveToRandomParkingSpaceNode : ActionNode
         }
 
 
-        if (distance > 0.6f)
+        if (distance > 2.0f)
         {
             return NodeStates.Running;
         }

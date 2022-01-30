@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController mPlayerController;
     Vector3 mPlayerVelocity;
     bool mbPlayerGrounded;
+    public bool mPlayerFixedLocation = false;
 
     public float speed = 12f;
     public float gravity = 9.81f;
@@ -28,24 +29,25 @@ public class PlayerMovement : MonoBehaviour
             mPlayerVelocity.y = -2;
         }
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-
-        Vector3 move = transform.right * x + transform.forward * z;
-        mPlayerController.Move(move * speed * Time.deltaTime);
-
-
-        if(Input.GetButtonDown("Jump") && mbPlayerGrounded)
+        if(!mPlayerFixedLocation)
         {
-            mPlayerVelocity.y = Mathf.Sqrt(jumpHeight * 2 * gravity);
-        }
+            float x = Input.GetAxis("Horizontal");
+            float z = Input.GetAxis("Vertical");
+
+            Vector3 move = transform.right * x + transform.forward * z;
+            mPlayerController.Move(move * speed * Time.deltaTime);
 
 
-        mPlayerVelocity.y -= gravity * Time.deltaTime;
+            if(Input.GetButtonDown("Jump") && mbPlayerGrounded)
+            {
+                mPlayerVelocity.y = Mathf.Sqrt(jumpHeight * 2 * gravity);
+            }
 
-        mPlayerController.Move(mPlayerVelocity * Time.deltaTime);
 
-       
+            mPlayerVelocity.y -= gravity * Time.deltaTime;
+
+            mPlayerController.Move(mPlayerVelocity * Time.deltaTime);
+        }       
     }
 
     private void FixedUpdate()
