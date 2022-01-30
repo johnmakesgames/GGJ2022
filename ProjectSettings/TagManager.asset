@@ -10,7 +10,7 @@ TagManager:
   - AiDestination
   - CarDestination
   - Fish
-  - WorldLight
+  - AssassinVictim
   layers:
   - Default
   - TransparentFX
