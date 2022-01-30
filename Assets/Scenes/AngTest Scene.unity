@@ -711,6 +711,18 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7779122524238450889, guid: 1c52ec24761b4dc4091120044f9517cf, type: 3}
+      propertyPath: mFreezePlayerWhenUsingItem
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7779122524238450889, guid: 1c52ec24761b4dc4091120044f9517cf, type: 3}
+      propertyPath: mFreezePlayerMovementWhenUsingItem
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7779122524238450889, guid: 1c52ec24761b4dc4091120044f9517cf, type: 3}
+      propertyPath: mFreezePlayerRotationWhenUsingItem
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7779122524238450889, guid: 1c52ec24761b4dc4091120044f9517cf, type: 3}
       propertyPath: OnItemEquipped.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}

@@ -12,9 +12,9 @@ public class ItemHold : MonoBehaviour
     [SerializeField]
     private UnityEvent OnItemEquipped;
     [SerializeField]
-    private bool mFreezePlayerWhenUsingItem = false;
+    private bool mFreezePlayerMovementWhenUsingItem = false;
     [SerializeField]
-    private bool mAllowEquippedItemMovement = false;
+    private bool mFreezePlayerRotationWhenUsingItem = false;
 
     public GameObject mPlayer;
     public Vector3 mCurrentOffest;
@@ -39,10 +39,6 @@ public class ItemHold : MonoBehaviour
 
             if (mEquipped)
             {
-                Vector3 newPos = mPlayer.transform.position + (mPlayer.transform.forward); // keep
-                this.transform.position = new Vector3(newPos.x, mCurrentOffest.y, newPos.z);
-                this.transform.rotation = mPlayer.transform.rotation ;
-
                 if (Input.GetMouseButtonDown(0))
                 {
                     UseItem();
@@ -53,12 +49,14 @@ public class ItemHold : MonoBehaviour
                     EndUseItem();
                 }
             }
-            else
-            {
-                this.transform.position = mPlayer.transform.position + mCurrentOffest;
 
+            if (Input.GetButtonDown("Interact"))
+            {
+                mHeld = false;
+                EndUseItem();
+                this.transform.parent = null;
             }
-        
+
             if (Input.GetMouseButtonUp(1))
             {
                 Debug.Log("item equipped");
@@ -68,9 +66,17 @@ public class ItemHold : MonoBehaviour
                 {             
                     OnItemEquipped.Invoke();
 
-                    if (mFreezePlayerWhenUsingItem)
+                    Vector3 newPos = mPlayer.transform.position + (mPlayer.transform.forward);
+                    this.transform.position = new Vector3(newPos.x, mCurrentOffest.y, newPos.z);
+                    this.transform.rotation = mPlayer.transform.rotation;
+
+                    if (mFreezePlayerMovementWhenUsingItem)
                     {
                         mPlayer.GetComponent<PlayerMovement>().mPlayerFixedLocation = true;
+                    }
+
+                    if(mFreezePlayerRotationWhenUsingItem)
+                    {
                         mPlayer.GetComponentInChildren<MouseLook>().mClampMouseLook = true;
                     }
                 }
@@ -78,10 +84,11 @@ public class ItemHold : MonoBehaviour
                 { 
                     mPlayer.GetComponent<PlayerMovement>().mPlayerFixedLocation = false;
                     mPlayer.GetComponentInChildren<MouseLook>().mClampMouseLook = false;
+
+                    Vector3 newPos = mPlayer.transform.position + (mPlayer.transform.forward * -1);
+                    this.transform.position = new Vector3(newPos.x, mCurrentOffest.y, newPos.z);
+                    this.transform.rotation = mPlayer.transform.rotation;
                 }
-
-
-
             }
             
         }
@@ -97,7 +104,15 @@ public class ItemHold : MonoBehaviour
     public void InteractWithItem() //pick up and drop
     {
         Debug.Log("Interact with item");
-        mHeld = !mHeld;
+        mHeld = true;
+
+        if(mHeld)
+        {
+            Vector3 newPos = mPlayer.transform.position + (mPlayer.transform.forward * -1);
+            this.transform.position = new Vector3(newPos.x, mCurrentOffest.y, newPos.z);
+            this.transform.rotation = mPlayer.transform.rotation;
+            this.transform.parent = mPlayer.transform;
+        }
     }
 
     public void UseItem()
