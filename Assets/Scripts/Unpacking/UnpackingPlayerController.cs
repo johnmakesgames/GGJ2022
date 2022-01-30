@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UnpackingPlayerController : MonoBehaviour
 {
+    [SerializeField] private Text UIText;
     [SerializeField] private GameObject UnpackingRootObject;
     [SerializeField] private GameObject ItemSpawnerBox;
     private Transform PositionToReturnControllerTo;
@@ -76,15 +78,30 @@ public class UnpackingPlayerController : MonoBehaviour
         if(enabled)
         {
             MoveToFPPMovement();
+            UIText.enabled = false;
         }
         else
         {
             MoveToThisController();
+            UIText.enabled = true;
         }
     }
 
     void Update()
     {
+        if (ItemSpawnerBox)
+        {
+            if (ItemSpawnerBox.GetComponent<UnpackingFurnitureSpawner>().FurnitureObjects.Count > 0)
+            {
+                UIText.text = "Help your friend unpack! " + ItemSpawnerBox.GetComponent<UnpackingFurnitureSpawner>().FurnitureObjects.Count.ToString() + " items left! \n Press space to exit at any point.";
+            }
+        }
+        else
+        {
+            UIText.text = "NICE! Press space to exit!";
+        }
+
+
         CameraControlUpdate();
 
         if(isHoldingObject && heldObject != null)
