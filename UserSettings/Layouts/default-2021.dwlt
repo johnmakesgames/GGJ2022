@@ -21,6 +21,7 @@ MonoBehaviour:
     height: 997
   m_ShowMode: 4
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_Title: Scene
   m_RootView: {fileID: 8}
 =======
@@ -29,6 +30,9 @@ MonoBehaviour:
   m_RootView: {fileID: 7}
 >>>>>>> Animation
 =======
+=======
+  m_Title: Game
+>>>>>>> Animation
   m_RootView: {fileID: 9}
 >>>>>>> Animation
   m_MinSize: {x: 875, y: 300}
@@ -96,7 +100,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 316
+  controlID: 109
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -226,6 +230,7 @@ MonoBehaviour:
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
   controlID: 2721
 --- !u!114 &4
 >>>>>>> Animation
@@ -246,6 +251,9 @@ MonoBehaviour:
 >>>>>>> CarCollisions
 =======
   controlID: 79
+=======
+  controlID: 85
+>>>>>>> Animation
 --- !u!114 &6
 >>>>>>> Animation
 MonoBehaviour:
@@ -287,6 +295,7 @@ MonoBehaviour:
     width: 454
     height: 947
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_MinSize: {x: 275, y: 50}
   m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
@@ -316,6 +325,10 @@ MonoBehaviour:
 =======
   m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
+=======
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
+>>>>>>> Animation
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -634,11 +647,15 @@ MonoBehaviour:
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
   controlID: 2722
 --- !u!114 &11
 >>>>>>> Animation
 =======
   controlID: 84
+=======
+  controlID: 86
+>>>>>>> Animation
 --- !u!114 &13
 >>>>>>> Animation
 MonoBehaviour:
@@ -685,6 +702,7 @@ MonoBehaviour:
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
   controlID: 2723
 --- !u!114 &12
 >>>>>>> Animation
@@ -699,6 +717,9 @@ MonoBehaviour:
 >>>>>>> CarCollisions
 =======
   controlID: 85
+=======
+  controlID: 87
+>>>>>>> Animation
 --- !u!114 &14
 >>>>>>> Animation
 MonoBehaviour:
@@ -785,8 +806,8 @@ MonoBehaviour:
     y: 0
     width: 735
     height: 560
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
@@ -884,6 +905,7 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     - Assets/FarlandSkies/Skyboxes/CloudyCrown_02_Evening
 =======
     - Assets/Prefabs
@@ -894,11 +916,15 @@ MonoBehaviour:
 =======
     - Assets/Prefabs/Fishing Prefabs
 >>>>>>> Animation
+=======
+    - Assets/Scripts
+>>>>>>> Animation
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -921,12 +947,16 @@ MonoBehaviour:
 =======
   - Assets/Prefabs/Fishing Prefabs
 >>>>>>> Animation
+=======
+  - Assets/Scripts
+>>>>>>> Animation
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Users\h017026h\Documents\GitKraken\GGJ2022
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 26}
+<<<<<<< HEAD
 <<<<<<< HEAD
     m_SelectedIDs: e6800000
     m_LastClickedID: 32998
@@ -942,6 +972,11 @@ MonoBehaviour:
     m_SelectedIDs: 3a5c0000
     m_LastClickedID: 23610
     m_ExpandedIDs: 00000000045c0000065c0000085c00000a5c00000c5c00000e5c0000225c000000ca9a3b
+>>>>>>> Animation
+=======
+    m_SelectedIDs: 105c0000
+    m_LastClickedID: 23568
+    m_ExpandedIDs: 00000000085c00000a5c00000c5c00000e5c0000105c0000125c0000905c000000ca9a3b
 >>>>>>> Animation
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -973,6 +1008,7 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_ExpandedIDs: 00000000e4bb0000
 =======
     m_ExpandedIDs: 0000000060800000628000006480000066800000688000006a800000
@@ -982,6 +1018,9 @@ MonoBehaviour:
 >>>>>>> CarCollisions
 =======
     m_ExpandedIDs: 00000000045c0000065c0000085c00000a5c00000c5c00000e5c0000
+>>>>>>> Animation
+=======
+    m_ExpandedIDs: 00000000085c00000a5c00000c5c00000e5c0000105c0000125c0000
 >>>>>>> Animation
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1203,6 +1242,7 @@ MonoBehaviour:
       m_ExpandedIDs: 7095ffffb29dffff56a1ffffcae9ffff50760000d27900009a7e0000fc8200008c950000
 =======
       scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
       m_SelectedIDs: 
       m_LastClickedID: 0
 <<<<<<< HEAD
@@ -1214,6 +1254,11 @@ MonoBehaviour:
 >>>>>>> CarCollisions
 =======
       m_ExpandedIDs: 16faffff3afbffffe2590000
+>>>>>>> Animation
+=======
+      m_SelectedIDs: 2cfbffff
+      m_LastClickedID: -1236
+      m_ExpandedIDs: 28fbffff38fbffffe2590000
 >>>>>>> Animation
       m_RenameOverlay:
         m_UserAcceptedRename: 0
