@@ -1,4 +1,4 @@
-using System.Collections;
+            using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -70,10 +70,11 @@ public class ItemHold : MonoBehaviour
                 mEquipped = !mEquipped;
 
                 if (mEquipped)
-                {             
+                {
+                    Vector3 tempoffset = mCurrentOffest;
                     Vector3 newPos = mPlayer.transform.position + (mPlayer.transform.forward);
-                    mCurrentOffest.y = mPlayer.transform.position.y + mCurrentOffest.y;
-                    this.transform.position = new Vector3(newPos.x, mCurrentOffest.y, newPos.z);
+                    tempoffset.y = mPlayer.transform.position.y + mCurrentOffest.y;
+                    this.transform.position = new Vector3(newPos.x, tempoffset.y, newPos.z);
                     this.transform.rotation = mPlayer.transform.rotation;
 
                     OnItemEquipped.Invoke();
@@ -95,9 +96,10 @@ public class ItemHold : MonoBehaviour
                     mPlayer.GetComponent<PlayerMovement>().mPlayerFixedLocation = false;
                     mPlayer.GetComponentInChildren<MouseLook>().mClampMouseLook = false;
 
+                    Vector3 tempoffset = mCurrentOffest;
                     Vector3 newPos = mPlayer.transform.position + (mPlayer.transform.forward * -1);
-                    mCurrentOffest.y = mPlayer.transform.position.y + mCurrentOffest.y;
-                    this.transform.position = new Vector3(newPos.x, mCurrentOffest.y, newPos.z);
+                    tempoffset.y = mPlayer.transform.position.y + mCurrentOffest.y;
+                    this.transform.position = new Vector3(newPos.x, tempoffset.y, newPos.z);
                     this.transform.rotation = mPlayer.transform.rotation;
                 }
             }
@@ -119,9 +121,10 @@ public class ItemHold : MonoBehaviour
         if(!mHeld)
         {
             mHeld = true;
+            Vector3 tempoffset = mCurrentOffest;
             Vector3 newPos = mPlayer.transform.position + (mPlayer.transform.forward * -1);
-            mCurrentOffest.y = mPlayer.transform.position.y + mCurrentOffest.y;
-            this.transform.position = new Vector3(newPos.x, mCurrentOffest.y, newPos.z);
+            tempoffset.y = mPlayer.transform.position.y + mCurrentOffest.y;
+            this.transform.position = new Vector3(newPos.x, tempoffset.y, newPos.z);
             this.transform.rotation = mPlayer.transform.rotation;
             this.transform.parent = mPlayer.transform;
         }
