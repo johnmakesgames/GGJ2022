@@ -13,6 +13,7 @@ public class QuestGiver : MonoBehaviour
     public Text tilteText;
     public Text descriptionText;
     public Text pointsText;
+    public bool questPending = false;
 
     public void OpenQuestWindow()
     {
@@ -20,11 +21,17 @@ public class QuestGiver : MonoBehaviour
         tilteText.text = quest.questTitle;
         descriptionText.text = quest.questDescription;
         pointsText.text = quest.pointsText.ToString();
+        questPending = true;
+
     }
 
     private void Update()
     {
-        AcceptQuest();
+        if (quest.isActive == false && questPending == true)
+        {
+            AcceptQuest();
+        }
+        
     }
     public void AcceptQuest()
     {
@@ -37,8 +44,7 @@ public class QuestGiver : MonoBehaviour
                 Debug.Log("quest accepted");
             }
         
-
-        }
+    }
         
         
         
