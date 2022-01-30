@@ -207,6 +207,8 @@ public class FishingRod : MonoBehaviour
         mBittenFish = null;
         ImmediateReelIn();
         mLineTension = 0;
+
+        mPlayer.GetComponent<MoralityTracker>().SignalActivityCompleted();
     }
 
 
