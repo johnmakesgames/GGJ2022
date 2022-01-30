@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    //public Camera mPlayerCamera;
     public CharacterController mPlayerController;
     Vector3 mPlayerVelocity;
     bool mbPlayerGrounded;
