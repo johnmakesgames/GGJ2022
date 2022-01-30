@@ -1,13 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class CarCollider1 : MonoBehaviour
 {
     public int carHP = 12;
-
     public CarController Speed;
     public float accel = 1f;
+
+    public GameObject humanplayer;
 
    void OnCollisionEnter(Collision collisionInfo)
     {
@@ -18,9 +18,12 @@ public class CarCollider1 : MonoBehaviour
             Debug.Log(carHP);
         }
 
-        if (collisionInfo.collider.tag == "Civilan")
+        if (collisionInfo.collider.tag == "Pedestrian")
         {
-            //bad boy modifier
+            humanplayer.GetComponent<MoralityTracker>().badBoyPoints++;
+            collisionInfo.gameObject.GetComponent<Animator>().SetBool("Alive", false);
+            Destroy(collisionInfo.gameObject.GetComponent<NavMeshAgent>());
+            Destroy(collisionInfo.gameObject.GetComponent<CapsuleCollider>());
         }
 
 

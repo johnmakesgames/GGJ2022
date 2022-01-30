@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MoralityTracker : MonoBehaviour
@@ -28,6 +26,8 @@ public class MoralityTracker : MonoBehaviour
             {
                 goodBoyPoints += currentQuest.pointsText;
                 currentQuest.Complete();
+
+                MoralityManager.GetMoralityManager().Karma = (goodBoyPoints - badBoyPoints);
             }
         }
     }
