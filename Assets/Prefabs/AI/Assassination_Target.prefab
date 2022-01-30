@@ -2826,9 +2826,9 @@ GameObject:
   - component: {fileID: 4214474754943048121}
   - component: {fileID: 4214474754943048120}
   - component: {fileID: 4214474754943048123}
+  - component: {fileID: 7232650610606159164}
   - component: {fileID: 4214474754943048126}
   - component: {fileID: 4214474754943048127}
-  - component: {fileID: 7232650610606159164}
   m_Layer: 0
   m_Name: Assassination_Target
   m_TagString: Untagged
@@ -2888,6 +2888,22 @@ NavMeshAgent:
   m_BaseOffset: -0.05
   m_WalkableMask: 17
   m_ObstacleAvoidanceType: 4
+--- !u!114 &7232650610606159164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4214474754943048122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae28b3ac354fb85499b6ef8564e3d328, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAgentMoving: 0
+  isAgentRunning: 0
+  movingSpeed: 0
+  overrideSpeed: -1
 --- !u!136 &4214474754943048126
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2922,20 +2938,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7232650610606159164
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4214474754943048122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae28b3ac354fb85499b6ef8564e3d328, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movingSpeed: 0
-  overrideSpeed: -1
 --- !u!1001 &1216083500746029057
 PrefabInstance:
   m_ObjectHideFlags: 0

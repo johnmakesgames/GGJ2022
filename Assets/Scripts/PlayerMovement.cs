@@ -13,9 +13,13 @@ public class PlayerMovement : MonoBehaviour
     public float gravity = 9.81f;
     public float jumpHeight = 3f;
 
+    public GameObject playerManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        playerManager.GetComponent<PlayerManager>().RegisterAsPlayer(this.gameObject);
+        playerManager.GetComponent<PlayerManager>().SetAsActivePlayer(this.gameObject);
     }
 
     // Update is called once per frame

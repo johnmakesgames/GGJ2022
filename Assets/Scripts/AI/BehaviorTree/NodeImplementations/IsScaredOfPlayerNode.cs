@@ -5,7 +5,7 @@ public class IsScaredOfPlayerNode : DecisionNode
         Comparator = () =>
         {
             var manager = MoralityManager.GetMoralityManager();
-            if (manager.Karma < 0)
+            if (manager.Karma < -5)
             {
                 return true;
             }

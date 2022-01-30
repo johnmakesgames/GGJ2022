@@ -20,6 +20,11 @@ public class WaitNode : ActionNode
     public override NodeStates OnUpdate()
     {
         timeWaiting += Time.deltaTime;
+        if (parent.GetComponent<AIAnimationManager>())
+        {
+            parent.GetComponent<AIAnimationManager>().isAgentMoving = false;
+            parent.GetComponent<AIAnimationManager>().isAgentRunning = false;
+        }
 
         if (timeWaiting >= WaitTime)
         {

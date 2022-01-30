@@ -13,12 +13,6 @@ public class RunFromPlayerNode : ActionNode
         positionToGoTo = new Vector3(0, 0, 0);
         positionLastFrame = new Vector3(0, 0, 0);
         timeNotMoving = 0;
-
-        Vector3 vectorToPlayer = GameObject.FindGameObjectWithTag("Player").transform.position - parent.transform.position; 
-        positionToGoTo = parent.transform.position + (vectorToPlayer.normalized * 50);
-        NavMeshPath path = new NavMeshPath();
-        parent.GetComponent<NavMeshAgent>().CalculatePath(positionToGoTo, path);
-        parent.GetComponent<NavMeshAgent>().SetPath(path);
     }
 
     public override void OnExit()
@@ -28,6 +22,13 @@ public class RunFromPlayerNode : ActionNode
 
     public override NodeStates OnUpdate()
     {
+        Vector3 vectorToPlayer = parent.transform.position - GameObject.FindGameObjectWithTag("Player").transform.position;
+        positionToGoTo = parent.transform.position + (vectorToPlayer.normalized);
+        NavMeshPath path = new NavMeshPath();
+        parent.GetComponent<NavMeshAgent>().CalculatePath(positionToGoTo, path);
+        parent.GetComponent<NavMeshAgent>().SetPath(path);
+
+
         if (positionLastFrame == this.parent.transform.position)
         {
             timeNotMoving += Time.deltaTime;
@@ -44,13 +45,19 @@ public class RunFromPlayerNode : ActionNode
         }
         else
         {
-            parent.GetComponent<NavMeshAgent>().speed = 5.0f;
+            parent.GetComponent<NavMeshAgent>().speed = 10.0f;
+        }
+
+        if (parent.GetComponent<AIAnimationManager>())
+        {
+            parent.GetComponent<AIAnimationManager>().isAgentMoving = true;
+            parent.GetComponent<AIAnimationManager>().isAgentRunning = true;
         }
 
         positionLastFrame = this.parent.transform.position;
 
-        float distance = Vector3.Distance(parent.transform.position, positionToGoTo);
-        if (distance > 0.6f)
+        float distance = Vector3.Distance(parent.transform.position, GameObject.FindGameObjectWithTag("Player").transform.position);
+        if (distance < 10.0f)
         {
             return NodeStates.Running;
         }

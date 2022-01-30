@@ -16,7 +16,6 @@ public class MoralityManager : MonoBehaviour
 
     private void Update()
     {
-        Karma += Time.deltaTime;
     }
 
     public float Karma
