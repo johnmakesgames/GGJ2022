@@ -26,6 +26,25 @@ public class WalkToRandomLocationNode : ActionNode
         if (positionLastFrame == this.parent.transform.position)
         {
             timeNotMoving += Time.deltaTime;
+            if (parent.GetComponent<AIAnimationManager>())
+            {
+                parent.GetComponent<AIAnimationManager>().isAgentMoving = false;
+                parent.GetComponent<AIAnimationManager>().isAgentRunning = false;
+            }
+        }
+        else
+        {
+            if (parent.GetComponent<AIAnimationManager>())
+            {
+                parent.GetComponent<AIAnimationManager>().isAgentMoving = true;
+                parent.GetComponent<AIAnimationManager>().isAgentRunning = false;
+            }
+        }
+
+        var manager = MoralityManager.GetMoralityManager();
+        if (manager.Karma < -5)
+        {
+            return NodeStates.Succeeded;
         }
 
         if (timeNotMoving >= 0.5f)

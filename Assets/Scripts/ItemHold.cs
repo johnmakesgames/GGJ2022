@@ -36,7 +36,6 @@ public class ItemHold : MonoBehaviour
     {
         if(mHeld)
         {
-
             if (mEquipped)
             {
                 if (Input.GetMouseButtonDown(0))
@@ -48,14 +47,18 @@ public class ItemHold : MonoBehaviour
                 {
                     EndUseItem();
                 }
+
+                if (Input.GetButtonDown("Interact")) //drop item
+                {
+                    mHeld = false;
+                    mEquipped = false;
+                    EndUseItem();
+                    this.transform.parent = null;
+                    mPlayer.GetComponent<PlayerMovement>().mPlayerFixedLocation = false;
+                    mPlayer.GetComponentInChildren<MouseLook>().mClampMouseLook = false;
+                }
             }
 
-            if (Input.GetButtonDown("Interact"))
-            {
-                mHeld = false;
-                EndUseItem();
-                this.transform.parent = null;
-            }
 
             if (Input.GetMouseButtonUp(1))
             {
@@ -104,10 +107,10 @@ public class ItemHold : MonoBehaviour
     public void InteractWithItem() //pick up and drop
     {
         Debug.Log("Interact with item");
-        mHeld = true;
 
-        if(mHeld)
+        if(!mHeld)
         {
+            mHeld = true;
             Vector3 newPos = mPlayer.transform.position + (mPlayer.transform.forward * -1);
             this.transform.position = new Vector3(newPos.x, mCurrentOffest.y, newPos.z);
             this.transform.rotation = mPlayer.transform.rotation;
